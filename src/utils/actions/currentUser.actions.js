@@ -17,7 +17,14 @@ const fetchUserRejected = (error) => ({
   error,
 });
 
-export const loginInUser = (email, password) => async (dispatch) => {
+export const logoutUser = () => {
+  localStorage.removeItem('user');
+  return {
+    type: cu.USER_LOGOUT,
+  };
+};
+
+export const loginUser = (email, password) => async (dispatch) => {
   dispatch(fetchUserLoading());
   try {
     const { data } = await api.post('v1/authenticate', {
@@ -25,7 +32,7 @@ export const loginInUser = (email, password) => async (dispatch) => {
       password,
     });
     const user = formatUser(data);
-    console.log(user);
+    localStorage.setItem('user', JSON.stringify(user));
     dispatch(fetchUserSuccess(user));
   } catch (err) {
     dispatch(fetchUserRejected(err));

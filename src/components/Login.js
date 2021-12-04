@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginInUser } from '../utils/actions/currentUser.actions';
+import { loginUser, logoutUser } from '../utils/actions/currentUser.actions';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,11 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginInUser(email, password));
+    dispatch(loginUser(email, password));
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
   };
 
   return (
@@ -27,7 +31,7 @@ const Login = () => {
         <input type="password" onChange={handlePassword} value={password} />
         <button type="submit">Log in</button>
       </form>
-      <button type="button">Log out</button>
+      <button type="button" onClick={handleLogout}>Log out</button>
     </div>
   );
 };
