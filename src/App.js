@@ -1,6 +1,10 @@
+import Login from './components/Login';
+
 function App() {
   return (
-    <h1>Hello world</h1>
+    <div className="App">
+      <Login />
+    </div>
   );
 }
 

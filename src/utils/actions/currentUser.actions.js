@@ -1,4 +1,7 @@
 import { currentUserConstants as cu } from '../constants';
+import { createApi } from '../helpers';
+
+const api = createApi();
 
 const fetchUserLoading = () => ({
   type: cu.FETCH_USER_LOADING,
@@ -17,10 +20,11 @@ const fetchUserRejected = (error) => ({
 export const loginInUser = (email, password) => async (dispatch) => {
   dispatch(fetchUserLoading());
   try {
-    const { data } = api.post('v1/authenticate', {
+    const { data } = await api.post('v1/authenticate', {
       email,
       password,
     });
+    const user = formatUser(data);
     console.log(data);
   } catch (err) {
     dispatch(fetchUserRejected(err));
