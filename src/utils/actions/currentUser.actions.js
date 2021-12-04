@@ -1,5 +1,5 @@
 import { currentUserConstants as cu } from '../constants';
-import { createApi } from '../helpers';
+import { createApi, formatUser } from '../helpers';
 
 const api = createApi();
 
@@ -25,7 +25,8 @@ export const loginInUser = (email, password) => async (dispatch) => {
       password,
     });
     const user = formatUser(data);
-    console.log(data);
+    console.log(user);
+    dispatch(fetchUserSuccess(user));
   } catch (err) {
     dispatch(fetchUserRejected(err));
   }
