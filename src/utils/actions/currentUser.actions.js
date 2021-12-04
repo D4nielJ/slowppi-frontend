@@ -39,14 +39,20 @@ export const loginUser = (email, password) => async (dispatch) => {
   }
 };
 
-export const registerUser = (email, password) => async (dispatch) => {
+export const registerUser = (firstName, lastName, email, password) => async (dispatch) => {
   dispatch(fetchUserLoading());
-  try {
-    const { data } = api.post('v1/authenticate', {
-      email,
-      password,
-    });
-  } catch (err) {
-    dispatch(fetchUserRejected(err));
-  }
+  // try {
+  const { data } = await api.post('v1/register', {
+    first_name: firstName,
+    last_name: lastName,
+    email,
+    password,
+    password_confirmation: password,
+  });
+  const user = formatUser(data);
+  localStorage.setItem('user', JSON.stringify(user));
+  dispatch(fetchUserSuccess(user));
+  // } catch (err) {
+  //   dispatch(fetchUserRejected(err));
+  // }
 };
