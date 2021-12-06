@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <VStack
       minH="100vh"
-      backgroundColor="yellow.400"
+      backgroundColor="yellow.300"
       justifyContent="center"
       spacing={12}
     >
