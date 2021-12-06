@@ -1,6 +1,15 @@
+import { Routes, Route } from 'react-router-dom';
+import { Home, Login, Logout } from './pages';
+
 function App() {
   return (
-    <h1>Hello world</h1>
+    <div className="App">
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Logout />} />
+      </Routes>
+    </div>
   );
 }
 
