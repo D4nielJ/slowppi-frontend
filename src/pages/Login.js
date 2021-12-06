@@ -1,19 +1,12 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser, logoutUser } from '../utils/actions/currentUser.actions';
+import { useControlledComp, useRedirectLoggedIn } from '../utils/customHooks';
 
 const Login = () => {
+  useRedirectLoggedIn();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('d4niel@test.com');
-  const [password, setPassword] = useState('password');
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
+  const [email, , handleEmail] = useControlledComp('');
+  const [password, , handlePassword] = useControlledComp('');
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { logoutUser, registerUser } from '../utils/actions/currentUser.actions';
-import { useControlledComp } from '../utils/customHooks';
+import { registerUser } from '../utils/actions/currentUser.actions';
+import { useControlledComp, useRedirectLoggedIn } from '../utils/customHooks';
 
 const Logout = () => {
+  useRedirectLoggedIn();
   const dispatch = useDispatch();
   const [firstName, setFirstName, handleFirstName] = useControlledComp('');
   const [lastName, setLastName, handleLastName] = useControlledComp('');
@@ -20,10 +21,6 @@ const Logout = () => {
     setPasswordConfi('');
   };
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  };
-
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
@@ -37,9 +34,8 @@ const Logout = () => {
         <input type="password" onChange={handlePassword} value={password} />
         confirm password:
         <input type="password" onChange={handlePasswordConfi} value={passwordConfi} />
-        <button type="submit">Log in</button>
+        <button type="submit">Sign Up</button>
       </form>
-      <button type="button" onClick={handleLogout}>Log out</button>
     </div>
   );
 };

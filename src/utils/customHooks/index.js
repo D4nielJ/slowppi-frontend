@@ -1,3 +1,4 @@
 import useControlledComp from './useControlledComp';
+import useRedirectLoggedIn from './useRedirectLoggedIn';
 
-export { useControlledComp };
+export { useControlledComp, useRedirectLoggedIn };

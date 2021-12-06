@@ -7,7 +7,7 @@ const initialState = user ? {
   status: 'success',
   error: null,
 } : {
-  user: {},
+  user: null,
   status: 'idle',
   error: null,
 };
@@ -35,7 +35,7 @@ const currentUserReducer = (state = initialState, action) => {
       return {
         ...state,
         status: 'idle',
-        user: {},
+        user: null,
       };
     default:
       return state;
