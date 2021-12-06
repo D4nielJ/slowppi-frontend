@@ -1,10 +1,8 @@
-/* eslint-disable camelcase */
-
 const formatUser = (token) => {
   const [, payload] = token.auth_token.split('.');
-  const { exp, user_id } = JSON.parse(window.atob(payload));
+  const { exp, user_id: id } = JSON.parse(window.atob(payload));
   return {
-    id: user_id,
+    id,
     role: 'admin',
     exp,
     token: token.auth_token,
