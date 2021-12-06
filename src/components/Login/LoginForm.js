@@ -1,13 +1,19 @@
 import {
   VStack, Text, FormControl,
   FormLabel,
+  FormErrorMessage,
   Input,
   Icon,
   HStack,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { IoEnterOutline } from 'react-icons/io5';
+import {
+  Formik, Form, useField, Field,
+} from 'formik';
+import * as Yup from 'yup';
 import { Button } from '../shared';
+import { TextInput } from '../shared/Forms';
 
 const LoginForm = () => (
   <VStack
@@ -19,28 +25,74 @@ const LoginForm = () => (
     spacing={16}
   >
     <Text fontSize="3xl" fontWeight="Bold">We&apos;re glad to see you!</Text>
-    <form>
-      <VStack spacing={8}>
+    <Formik
+      initialValues={{
+        email: '',
+        password: '',
+      }}
+      validationSchema={Yup.object({
+        email: Yup.string()
+          .email('Invalid email address')
+          .required('Required'),
+        password: Yup.string()
+          .required('Required'),
+      })}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 2000);
+      }}
+    >
+      {(props) => (
+        <Form>
+          <VStack spacing={8}>
+            <TextInput
+              label="Email address"
+              name="email"
+              type="email"
+              placeholder="Email address"
+            />
 
-        <FormControl id="email">
-          <FormLabel srOnly>Email address</FormLabel>
-          <Input minW={96} size="lg" type="email" placeholder="Email address" />
-        </FormControl>
+            <TextInput
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
 
-        <FormControl id="password">
-          <FormLabel srOnly>Password</FormLabel>
-          <Input minW={96} size="lg" type="password" placeholder="Password" />
-        </FormControl>
+            <Button type="submit" isLoading={props.isSubmitting}>
+              <HStack spacing={4}>
+                <Text>Log in</Text>
+                <Icon as={IoEnterOutline} fontSize="2xl" />
+              </HStack>
+            </Button>
+          </VStack>
+        </Form>
+      )}
+      {/* <form>
+        <VStack spacing={8}>
 
-        <Button type="submit">
-          <HStack spacing={4}>
-            <Text>Log in</Text>
-            <Icon as={IoEnterOutline} fontSize="2xl" />
-          </HStack>
-        </Button>
+          <FormControl id="email">
+            <FormLabel srOnly>Email address</FormLabel>
+            <Input minW={96} size="lg" type="email" placeholder="Email address" />
+          </FormControl>
 
-      </VStack>
-    </form>
+          <FormControl id="password">
+            <FormLabel srOnly>Password</FormLabel>
+            <Input minW={96} size="lg" type="password" placeholder="Password" />
+          </FormControl>
+
+          <Button type="submit">
+            <HStack spacing={4}>
+              <Text>Log in</Text>
+              <Icon as={IoEnterOutline} fontSize="2xl" />
+            </HStack>
+          </Button>
+
+        </VStack>
+      </form> */}
+    </Formik>
     <HStack>
       <Text>
         Haven&apos;t you registered yet?

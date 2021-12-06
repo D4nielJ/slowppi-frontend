@@ -59,3 +59,21 @@ const SignupForm = () => (
 );
 
 export default SignupForm;
+
+// validationSchema={Yup.object({
+//   firstName: Yup.string()
+//     .max(20, 'Must be 20 characters or less')
+//     .required('Required'),
+//   lastName: Yup.string()
+//     .max(20, 'Must be 20 characters or less')
+//     .required('Required'),
+//   email: Yup.string()
+//     .email('Invalid email address')
+//     .required('Required'),
+//   password: Yup.string()
+//     .min(8, 'Password is too short (8 chars minimum).')
+//     .matches(/"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/, 'Password must have at least one number and one letter')
+//     .required('Required'),
+//   passwordConfirmation: Yup.string()
+//     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+// })}

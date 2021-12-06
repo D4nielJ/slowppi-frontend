@@ -1,6 +1,6 @@
 import { Button as ChakraButton } from '@chakra-ui/react';
 
-const Button = ({ children }) => (
+const Button = ({ children, ...props }) => (
   <ChakraButton
     color="white"
     bg="green.300"
@@ -9,6 +9,7 @@ const Button = ({ children }) => (
     p={6}
     _hover={{ bg: 'green.400' }}
     _active={{ bg: 'green.500' }}
+    {...props}
   >
     {children}
   </ChakraButton>
