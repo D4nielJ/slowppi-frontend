@@ -5,6 +5,7 @@ const formatUser = (token) => {
   const { exp, user_id } = JSON.parse(window.atob(payload));
   return {
     id: user_id,
+    role: 'admin',
     exp,
     token: token.auth_token,
   };
