@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { IoEnterOutline } from 'react-icons/io5';
 import { Button } from '../shared';
 
-const LoginForm = () => (
+const SignupForm = () => (
   <VStack
     flexShrink={0}
     w="full"
@@ -18,9 +18,17 @@ const LoginForm = () => (
     pt={16}
     spacing={16}
   >
-    <Text fontSize="3xl" fontWeight="Bold">We&apos;re glad to see you!</Text>
+    <Text fontSize="3xl" fontWeight="Bold">Welcome!</Text>
     <form>
       <VStack spacing={8}>
+        <FormControl id="email">
+          <FormLabel srOnly>First name</FormLabel>
+          <Input minW={96} size="lg" type="text" placeholder="First name" />
+        </FormControl>
+        <FormControl id="email">
+          <FormLabel srOnly>Last name</FormLabel>
+          <Input minW={96} size="lg" type="text" placeholder="Last name" />
+        </FormControl>
         <FormControl id="email">
           <FormLabel srOnly>Email address</FormLabel>
           <Input minW={96} size="lg" type="email" placeholder="Email address" />
@@ -29,9 +37,13 @@ const LoginForm = () => (
           <FormLabel srOnly>Password</FormLabel>
           <Input minW={96} size="lg" type="password" placeholder="Password" />
         </FormControl>
+        <FormControl id="email">
+          <FormLabel srOnly>Password confirmation</FormLabel>
+          <Input minW={96} size="lg" type="password" placeholder="Password confirmation" />
+        </FormControl>
         <Button type="submit">
           <HStack spacing={4}>
-            <Text>Log in</Text>
+            <Text>Sign up</Text>
             <Icon as={IoEnterOutline} fontSize="2xl" />
           </HStack>
         </Button>
@@ -39,11 +51,11 @@ const LoginForm = () => (
     </form>
     <HStack>
       <Text>
-        Haven&apos;t you registered yet?
+        Alredy registered?
       </Text>
-      <Text color="green.500" textDecor="underline" _hover={{ color: 'gray.700' }}><Link to="/signup">Register here!</Link></Text>
+      <Text color="green.500" textDecor="underline" _hover={{ color: 'gray.700' }}><Link to="/login">Log in here!</Link></Text>
     </HStack>
   </VStack>
 );
 
-export default LoginForm;
+export default SignupForm;
