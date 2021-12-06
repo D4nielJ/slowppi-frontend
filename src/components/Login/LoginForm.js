@@ -21,20 +21,24 @@ const LoginForm = () => (
     <Text fontSize="3xl" fontWeight="Bold">We&apos;re glad to see you!</Text>
     <form>
       <VStack spacing={8}>
+
         <FormControl id="email">
           <FormLabel srOnly>Email address</FormLabel>
           <Input minW={96} size="lg" type="email" placeholder="Email address" />
         </FormControl>
-        <FormControl id="email">
+
+        <FormControl id="password">
           <FormLabel srOnly>Password</FormLabel>
           <Input minW={96} size="lg" type="password" placeholder="Password" />
         </FormControl>
+
         <Button type="submit">
           <HStack spacing={4}>
             <Text>Log in</Text>
             <Icon as={IoEnterOutline} fontSize="2xl" />
           </HStack>
         </Button>
+
       </VStack>
     </form>
     <HStack>
