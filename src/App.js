@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home, Login, Signup } from './pages';
+import '@fontsource/righteous';
+import '@fontsource/open-sans';
 
 function App() {
   return (
