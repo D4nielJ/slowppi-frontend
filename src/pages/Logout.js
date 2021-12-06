@@ -5,20 +5,15 @@ import { useControlledComp, useRedirectLoggedIn } from '../utils/customHooks';
 const Logout = () => {
   useRedirectLoggedIn();
   const dispatch = useDispatch();
-  const [firstName, setFirstName, handleFirstName] = useControlledComp('');
-  const [lastName, setLastName, handleLastName] = useControlledComp('');
-  const [email, setEmail, handleEmail] = useControlledComp('');
-  const [password, setPassword, handlePassword] = useControlledComp('');
-  const [passwordConfi, setPasswordConfi, handlePasswordConfi] = useControlledComp('');
+  const [firstName, , handleFirstName] = useControlledComp('');
+  const [lastName, , handleLastName] = useControlledComp('');
+  const [email, , handleEmail] = useControlledComp('');
+  const [password, , handlePassword] = useControlledComp('');
+  const [passwordConfi, , handlePasswordConfi] = useControlledComp('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerUser(firstName, lastName, email, password));
-    setFirstName('');
-    setLastName('');
-    setEmail('');
-    setPassword('');
-    setPasswordConfi('');
   };
 
   return (
