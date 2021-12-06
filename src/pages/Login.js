@@ -1,6 +1,7 @@
 import {
-  VStack, HStack, Box, Text, Image,
+  VStack, HStack, Box, Image,
 } from '@chakra-ui/react';
+import LoginForm from '../components/Login/LoginForm';
 import { RegistrationNavbar } from '../components/shared';
 
 const Login = () => (
@@ -25,15 +26,7 @@ const Login = () => (
           h="full"
         />
       </Box>
-      <VStack
-        flexShrink={0}
-        w="full"
-        h="full"
-        maxW="72%"
-        pt={8}
-      >
-        <Text fontSize="3xl" fontWeight="Bold">Log in</Text>
-      </VStack>
+      <LoginForm />
     </HStack>
   </VStack>
 );

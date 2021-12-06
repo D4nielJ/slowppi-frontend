@@ -4,7 +4,7 @@ import {
 import { Link } from 'react-router-dom';
 import { IoEnterOutline, IoChevronForwardCircleOutline } from 'react-icons/io5';
 import { AiOutlineUserAdd } from 'react-icons/ai';
-import Button from '../components/Home/Button';
+import { Button } from '../components/shared';
 
 const Home = () => (
   <VStack
