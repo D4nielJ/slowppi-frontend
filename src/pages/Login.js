@@ -1,6 +1,7 @@
 import {
-  VStack, HStack, Box, Image,
+  VStack, HStack, Box, Image, Text,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import LoginForm from '../components/Login/LoginForm';
 import { RegistrationNavbar } from '../components/shared';
 
@@ -26,10 +27,25 @@ const Login = () => (
           h="full"
         />
       </Box>
-      <LoginForm />
+      <VStack
+        flexShrink={0}
+        w="full"
+        h="full"
+        maxW="72%"
+        pt={16}
+        spacing={16}
+      >
+        <Text fontSize="3xl" fontWeight="Bold">We&apos;re glad to see you!</Text>
+        <LoginForm />
+        <HStack>
+          <Text>
+            Haven&apos;t you registered yet?
+          </Text>
+          <Text color="green.500" textDecor="underline" _hover={{ color: 'gray.700' }}><Link to="/signup">Register here!</Link></Text>
+        </HStack>
+      </VStack>
     </HStack>
   </VStack>
 );
 
 export default Login;
-

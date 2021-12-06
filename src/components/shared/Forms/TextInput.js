@@ -2,13 +2,11 @@ import { useField } from 'formik';
 import {
   FormControl, FormLabel, Input, FormErrorMessage,
 } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 const TextInput = ({
   label, ...props
 }) => {
-  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
-  // which we can spread on <input>. We can use field meta to show an error
-  // message if the field is invalid and it has been touched (i.e. visited)
   const [field, meta] = useField(props);
   return (
     <FormControl isInvalid={meta.touched && meta.error}>
@@ -17,6 +15,12 @@ const TextInput = ({
       <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>
   );
+};
+
+TextInput.propTypes = {
+  id: PropTypes.number.isRequired,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default TextInput;

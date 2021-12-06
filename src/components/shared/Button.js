@@ -1,4 +1,5 @@
 import { Button as ChakraButton } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 const Button = ({ children, ...props }) => (
   <ChakraButton
@@ -14,4 +15,9 @@ const Button = ({ children, ...props }) => (
     {children}
   </ChakraButton>
 );
+
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 export default Button;
