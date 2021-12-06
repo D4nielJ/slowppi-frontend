@@ -1,16 +1,40 @@
-import { VStack, HStack } from '@chakra-ui/react';
+import {
+  VStack, HStack, Box, Text, Image,
+} from '@chakra-ui/react';
 import { RegistrationNavbar } from '../components/shared';
 
 const Login = () => (
-  <VStack>
+  <VStack h="full" spacing={0}>
     <RegistrationNavbar />
-    <HStack />
-    { // Nav component
-    // Body
-    // HStack
-    // ImageOnTheLeft
-    // FormOnTheRight
-}
+    <HStack
+      flexShrink={0}
+      w="full"
+      h="full"
+      alignItems="stretch"
+    >
+      <Box
+        flexShrink={1}
+        w="full"
+        h="full"
+        bgColor="yellow.200"
+      >
+        <Image
+          src="./assets/images/login-sidebar.jpg"
+          objectFit="cover"
+          w="full"
+          h="full"
+        />
+      </Box>
+      <VStack
+        flexShrink={0}
+        w="full"
+        h="full"
+        maxW="72%"
+        pt={8}
+      >
+        <Text fontSize="3xl" fontWeight="Bold">Log in</Text>
+      </VStack>
+    </HStack>
   </VStack>
 );
 
