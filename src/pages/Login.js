@@ -5,8 +5,8 @@ import { useControlledComp, useRedirectLoggedIn } from '../utils/customHooks';
 const Login = () => {
   useRedirectLoggedIn();
   const dispatch = useDispatch();
-  const [email, , handleEmail] = useControlledComp('');
-  const [password, , handlePassword] = useControlledComp('');
+  const [email, handleEmail] = useControlledComp('');
+  const [password, handlePassword] = useControlledComp('');
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -5,11 +5,11 @@ import { useControlledComp, useRedirectLoggedIn } from '../utils/customHooks';
 const Logout = () => {
   useRedirectLoggedIn();
   const dispatch = useDispatch();
-  const [firstName, , handleFirstName] = useControlledComp('');
-  const [lastName, , handleLastName] = useControlledComp('');
-  const [email, , handleEmail] = useControlledComp('');
-  const [password, , handlePassword] = useControlledComp('');
-  const [passwordConfi, , handlePasswordConfi] = useControlledComp('');
+  const [firstName, handleFirstName] = useControlledComp('');
+  const [lastName, handleLastName] = useControlledComp('');
+  const [email, handleEmail] = useControlledComp('');
+  const [password, handlePassword] = useControlledComp('');
+  const [passwordConfi, handlePasswordConfi] = useControlledComp('');
 
   const handleSubmit = (e) => {
     e.preventDefault();

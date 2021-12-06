@@ -7,7 +7,7 @@ const useControlledComp = (initial) => {
     setValue(e.target.value);
   };
 
-  return [value, setValue, handleValue];
+  return [value, handleValue, setValue];
 };
 
 export default useControlledComp;
