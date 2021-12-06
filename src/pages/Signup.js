@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from '../utils/actions/currentUser.actions';
 import { useControlledComp, useRedirectLoggedIn } from '../utils/customHooks';
 
-const Logout = () => {
+const Signup = () => {
   useRedirectLoggedIn();
   const dispatch = useDispatch();
   const [firstName, handleFirstName] = useControlledComp('');
@@ -35,4 +35,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default Signup;
