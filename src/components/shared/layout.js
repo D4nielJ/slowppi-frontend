@@ -3,7 +3,7 @@ import { HStack } from '@chakra-ui/react';
 import Navbar from './Navbar';
 
 const Layout = ({ children }) => (
-  <HStack>
+  <HStack w="full" h="100vh" overflow="none">
     <Navbar />
     <section>
       {children}
