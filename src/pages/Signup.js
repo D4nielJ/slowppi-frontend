@@ -2,12 +2,13 @@ import {
   VStack, HStack, Box, Image, Text, AspectRatio,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import LoginForm from '../components/Login/LoginForm';
+import SignupForm from '../components/Signup/SignupForm';
 import { RegistrationNavbar } from '../components/shared';
 import { useRedirectLoggedIn } from '../utils/customHooks';
 
-const Login = () => {
+const Signup = () => {
   useRedirectLoggedIn('/restaurants');
+
   return (
     <VStack h="full" spacing={0}>
       <RegistrationNavbar />
@@ -21,10 +22,11 @@ const Login = () => {
           flexShrink={1}
           w="full"
           h="full"
+          bgColor="yellow.200"
         >
           <AspectRatio ratio={1}>
             <Image
-              src="./assets/images/login-sidebar.jpg"
+              src="./assets/images/signup-sidebar.jpg"
               objectFit="cover"
               w="full"
               h="full"
@@ -39,13 +41,15 @@ const Login = () => {
           pt={16}
           spacing={16}
         >
-          <Text fontSize="3xl" fontWeight="Bold">We&apos;re glad to see you!</Text>
-          <LoginForm />
+          <Text fontSize="3xl" fontWeight="Bold">Welcome!</Text>
+          <SignupForm />
           <HStack>
             <Text>
-              Haven&apos;t you registered yet?
+              Alredy registered?
             </Text>
-            <Text color="green.500" textDecor="underline" _hover={{ color: 'gray.700' }}><Link to="/signup">Register here!</Link></Text>
+            <Text color="green.500" textDecor="underline" _hover={{ color: 'gray.700' }}>
+              <Link to="/login">Log in here!</Link>
+            </Text>
           </HStack>
         </VStack>
       </HStack>
@@ -53,4 +57,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

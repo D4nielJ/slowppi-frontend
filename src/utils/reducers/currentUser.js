@@ -18,12 +18,14 @@ const currentUserReducer = (state = initialState, action) => {
       return {
         ...state,
         status: 'loading',
+        error: null,
       };
     case cu.FETCH_USER_SUCCESS:
       return {
         ...state,
         status: 'success',
         user: action.user,
+        error: null,
       };
     case cu.FETCH_USER_REJECTED:
       return {
