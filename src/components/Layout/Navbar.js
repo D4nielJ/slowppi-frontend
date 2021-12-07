@@ -11,7 +11,6 @@ const ActiveLink = ({
   role = '', to = '/', children, ...props
 }) => {
   const { pathname: path } = useLocation();
-  console.log(path);
 
   let activeLinkProps = {};
   if (path === to) {
@@ -29,8 +28,8 @@ const ActiveLink = ({
         color="gray.700"
         fontSize="xl"
         p={4}
-        pr={10}
-        ml={6}
+        pr={16}
+        ml={8}
         {...props}
         {...activeLinkProps}
       >
