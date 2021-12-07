@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Layout } from '../components/shared';
+import Layout from '../components/Layout/Layout';
 
 const Restaurants = () => {
   const { user } = useSelector((state) => state.currentUser);
