@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { Button as ChakraButton } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 

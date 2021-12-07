@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { useField } from 'formik';
 import {
   FormControl, FormLabel, Input, FormErrorMessage,
