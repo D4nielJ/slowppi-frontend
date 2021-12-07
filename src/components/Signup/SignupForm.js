@@ -92,7 +92,7 @@ const SignupForm = () => {
 
             <Button type="submit" isLoading={props.isSubmitting}>
               <HStack spacing={4}>
-                <Text>Log in</Text>
+                <Text>Sign up</Text>
                 <Icon as={IoEnterOutline} fontSize="2xl" />
               </HStack>
             </Button>

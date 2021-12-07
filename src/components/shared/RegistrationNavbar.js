@@ -13,7 +13,7 @@ const RegistrationNavbar = () => (
           <Text fontWeight="bold">Back</Text>
         </HStack>
       </Link>
-      <Heading fontSize="xl" color="green.300" letterSpacing="widest">SLOWPPI</Heading>
+      <Heading fontSize="xl" color="green.300" letterSpacing="widest" position="relative" right={20}>SLOWPPI</Heading>
       <div />
     </HStack>
   </Box>

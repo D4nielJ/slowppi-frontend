@@ -1,8 +1,8 @@
 import {
-  VStack, HStack, Box, Image, Text,
+  VStack, HStack, Box, Image, Text, AspectRatio,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import SignupForm from '../components/Logout/SignupForm';
+import SignupForm from '../components/Signup/SignupForm';
 import { RegistrationNavbar } from '../components/shared';
 
 const Signup = () => (
@@ -20,18 +20,20 @@ const Signup = () => (
         h="full"
         bgColor="yellow.200"
       >
-        <Image
-          src="./assets/images/signup-sidebar.jpg"
-          objectFit="cover"
-          w="full"
-          h="full"
-        />
+        <AspectRatio ratio={1}>
+          <Image
+            src="./assets/images/signup-sidebar.jpg"
+            objectFit="cover"
+            w="full"
+            h="full"
+          />
+        </AspectRatio>
       </Box>
       <VStack
         flexShrink={0}
         w="full"
         h="full"
-        maxW="72%"
+        maxW="60%"
         pt={16}
         spacing={16}
       >
