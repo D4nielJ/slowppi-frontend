@@ -1,6 +1,7 @@
 import {
-  VStack, HStack, Box, Image,
+  VStack, HStack, Box, Image, Text,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import SignupForm from '../components/Logout/SignupForm';
 import { RegistrationNavbar } from '../components/shared';
 
@@ -26,48 +27,27 @@ const Signup = () => (
           h="full"
         />
       </Box>
-      <SignupForm />
+      <VStack
+        flexShrink={0}
+        w="full"
+        h="full"
+        maxW="72%"
+        pt={16}
+        spacing={16}
+      >
+        <Text fontSize="3xl" fontWeight="Bold">Welcome!</Text>
+        <SignupForm />
+        <HStack>
+          <Text>
+            Alredy registered?
+          </Text>
+          <Text color="green.500" textDecor="underline" _hover={{ color: 'gray.700' }}>
+            <Link to="/login">Log in here!</Link>
+          </Text>
+        </HStack>
+      </VStack>
     </HStack>
   </VStack>
 );
 
 export default Signup;
-
-// import { useDispatch } from 'react-redux';
-// import { registerUser } from '../utils/actions/currentUser.actions';
-// import { useControlledComp, useRedirectLoggedIn } from '../utils/customHooks';
-
-// const Signup = () => {
-//   useRedirectLoggedIn();
-//   const dispatch = useDispatch();
-//   const [firstName, handleFirstName] = useControlledComp('');
-//   const [lastName, handleLastName] = useControlledComp('');
-//   const [email, handleEmail] = useControlledComp('');
-//   const [password, handlePassword] = useControlledComp('');
-//   const [passwordConfi, handlePasswordConfi] = useControlledComp('');
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     dispatch(registerUser(firstName, lastName, email, password));
-//   };
-
-//   return (
-//     <div>
-//       <form action="" onSubmit={handleSubmit}>
-//         first name:
-//         <input type="text" onChange={handleFirstName} value={firstName} />
-//         last name:
-//         <input type="text" onChange={handleLastName} value={lastName} />
-//         email:
-//         <input type="email" onChange={handleEmail} value={email} />
-//         password:
-//         <input type="password" onChange={handlePassword} value={password} />
-//         confirm password:
-//         <input type="password" onChange={handlePasswordConfi} value={passwordConfi} />
-//         <button type="submit">Sign Up</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Signup;
