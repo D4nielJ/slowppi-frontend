@@ -12,10 +12,8 @@ import { IoEnterOutline } from 'react-icons/io5';
 import { Button } from '../shared';
 import { TextInput } from '../shared/Forms';
 import { registerUser } from '../../utils/actions/currentUser.actions';
-import { useRedirectLoggedIn } from '../../utils/customHooks';
 
 const SignupForm = () => {
-  useRedirectLoggedIn('/restaurants');
   const dispatch = useDispatch();
 
   return (
