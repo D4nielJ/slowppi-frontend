@@ -1,53 +1,16 @@
-/* eslint-disable react/jsx-props-no-spreading */
+import { useDispatch } from 'react-redux';
+
 import {
-  VStack, Heading, HStack, Icon, Text, Link as ChakraLink,
+  VStack, Heading, HStack, Icon, Text,
 } from '@chakra-ui/react';
+
 import {
   IoEnterOutline, IoLogoFacebook, IoLogoTwitter, IoLogoMedium, IoLogoGithub,
 } from 'react-icons/io5';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
 import { logoutUser } from '../../utils/actions/currentUser.actions';
-import { hasSomeRole } from '../../utils/helpers';
 import { Button } from '../shared';
-
-const ActiveLink = ({
-  roles, to = '/', children, ...props
-}) => {
-  const { pathname: path } = useLocation();
-  const { user } = useSelector((state) => state.currentUser);
-
-  if (!hasSomeRole(user, roles)) {
-    return null;
-  }
-
-  let activeLinkProps = {};
-  if (path === to) {
-    activeLinkProps = {
-      bg: 'green.300',
-      color: 'white',
-    };
-  }
-
-  return (
-    <RouterLink to={to}>
-      <ChakraLink
-        textTransform="uppercase"
-        fontWeight="black"
-        color="gray.700"
-        fontSize="xl"
-        p={4}
-        pr={16}
-        ml={8}
-        {...props}
-        {...activeLinkProps}
-      >
-        {children}
-      </ChakraLink>
-    </RouterLink>
-  );
-};
+import ActiveLink from './ActiveLink';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -85,17 +48,17 @@ const Navbar = () => {
             </HStack>
           </Button>
         </HStack>
-        <HStack spacing={4}>
-          <a href="/" target="_blank" rel="noopener noreferrer">
+        <HStack spacing={6}>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
             <Icon as={IoLogoFacebook} fontSize="2xl" />
           </a>
-          <a href="/" target="_blank" rel="noopener noreferrer">
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
             <Icon as={IoLogoTwitter} fontSize="2xl" />
           </a>
-          <a href="/" target="_blank" rel="noopener noreferrer">
+          <a href="https://medium.com/" target="_blank" rel="noopener noreferrer">
             <Icon as={IoLogoMedium} fontSize="2xl" />
           </a>
-          <a href="/" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/leonardodiasb/final-capstone-back-end" target="_blank" rel="noopener noreferrer">
             <Icon as={IoLogoGithub} fontSize="2xl" />
           </a>
         </HStack>
@@ -105,14 +68,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-ActiveLink.defaultProps = {
-  roles: ['', 'admin'],
-  to: '/',
-};
-
-ActiveLink.propTypes = {
-  roles: PropTypes.arrayOf(PropTypes.string),
-  to: PropTypes.string,
-  children: PropTypes.node.isRequired,
-};
