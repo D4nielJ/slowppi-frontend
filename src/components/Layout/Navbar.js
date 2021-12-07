@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import {
   VStack, Heading, HStack, Icon, Text, Link as ChakraLink,
 } from '@chakra-ui/react';
@@ -6,6 +7,7 @@ import {
 } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { logoutUser } from '../../utils/actions/currentUser.actions';
 import { hasSomeRole } from '../../utils/helpers';
 import { Button } from '../shared';
@@ -103,3 +105,14 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+ActiveLink.defaultProps = {
+  roles: ['', 'admin'],
+  to: '/',
+};
+
+ActiveLink.propTypes = {
+  roles: PropTypes.arrayOf(PropTypes.string),
+  to: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
