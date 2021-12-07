@@ -26,11 +26,11 @@ const Navbar = () => {
           <ActiveLink to="/restaurants">
             Restaurants
           </ActiveLink>
-          <ActiveLink to="/categories">
-            Categories
+          <ActiveLink to="/reservations">
+            Reservations
           </ActiveLink>
-          <ActiveLink to="/shifts">
-            Shifts
+          <ActiveLink to="/blog">
+            Blog
           </ActiveLink>
           <ActiveLink to="/admin" roles={['admin']}>
             Admin
