@@ -4,15 +4,21 @@ import {
 import {
   IoEnterOutline, IoLogoFacebook, IoLogoTwitter, IoLogoMedium, IoLogoGithub,
 } from 'react-icons/io5';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { logoutUser } from '../../utils/actions/currentUser.actions';
+import { hasSomeRole } from '../../utils/helpers';
 import { Button } from '../shared';
 
 const ActiveLink = ({
-  role = '', to = '/', children, ...props
+  roles, to = '/', children, ...props
 }) => {
   const { pathname: path } = useLocation();
+  const { user } = useSelector((state) => state.currentUser);
+
+  if (!hasSomeRole(user, roles)) {
+    return null;
+  }
 
   let activeLinkProps = {};
   if (path === to) {
@@ -61,7 +67,7 @@ const Navbar = () => {
           <ActiveLink to="/shifts">
             Shifts
           </ActiveLink>
-          <ActiveLink to="/admin">
+          <ActiveLink to="/admin" roles={['admin']}>
             Admin
           </ActiveLink>
         </VStack>
