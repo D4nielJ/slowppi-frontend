@@ -11,14 +11,13 @@ const TextInput = ({
   return (
     <FormControl isInvalid={meta.touched && meta.error}>
       <FormLabel srOnly htmlFor={props.name}>{label}</FormLabel>
-      <Input id={props.id} minW={96} size="lg" {...field} {...props} />
+      <Input id={props.name} minW={96} size="lg" {...field} {...props} />
       <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>
   );
 };
 
 TextInput.propTypes = {
-  id: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };

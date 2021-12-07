@@ -37,6 +37,7 @@ const LoginForm = () => (
           <TextInput
             label="Email address"
             name="email"
+            id="email"
             type="email"
             placeholder="Email address"
           />
@@ -44,6 +45,7 @@ const LoginForm = () => (
           <TextInput
             label="Password"
             name="password"
+            id="password"
             type="password"
             placeholder="Password"
           />
