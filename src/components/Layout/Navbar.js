@@ -1,7 +1,9 @@
 import {
   VStack, Heading, HStack, Icon, Text, Link as ChakraLink,
 } from '@chakra-ui/react';
-import { IoEnterOutline } from 'react-icons/io5';
+import {
+  IoEnterOutline, IoLogoFacebook, IoLogoTwitter, IoLogoMedium, IoLogoGithub,
+} from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { logoutUser } from '../../utils/actions/currentUser.actions';
@@ -64,22 +66,30 @@ const Navbar = () => {
           </ActiveLink>
         </VStack>
       </VStack>
-      <VStack spacing={4}>
+      <VStack spacing={10}>
         <HStack>
           <Button onClick={handleSignOut}>
             <HStack spacing={2}>
               <Text>
                 Sign Out
               </Text>
-              <Icon as={IoEnterOutline} fontSize="3xl" />
+              <Icon as={IoEnterOutline} fontSize="2xl" />
             </HStack>
           </Button>
         </HStack>
         <HStack spacing={4}>
-          <Icon as={IoEnterOutline} fontSize="3xl" />
-          <Icon as={IoEnterOutline} fontSize="3xl" />
-          <Icon as={IoEnterOutline} fontSize="3xl" />
-          <Icon as={IoEnterOutline} fontSize="3xl" />
+          <a href="/" target="_blank" rel="noopener noreferrer">
+            <Icon as={IoLogoFacebook} fontSize="2xl" />
+          </a>
+          <a href="/" target="_blank" rel="noopener noreferrer">
+            <Icon as={IoLogoTwitter} fontSize="2xl" />
+          </a>
+          <a href="/" target="_blank" rel="noopener noreferrer">
+            <Icon as={IoLogoMedium} fontSize="2xl" />
+          </a>
+          <a href="/" target="_blank" rel="noopener noreferrer">
+            <Icon as={IoLogoGithub} fontSize="2xl" />
+          </a>
         </HStack>
       </VStack>
     </VStack>
