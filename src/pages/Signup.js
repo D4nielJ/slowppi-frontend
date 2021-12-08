@@ -10,21 +10,15 @@ const Signup = () => {
   useRedirectLoggedIn('/restaurants');
 
   return (
-    <VStack h="full" spacing={0}>
+    <VStack h="100vh" spacing={0}>
       <RegistrationNavbar />
-      <HStack
-        flexShrink={0}
-        w="full"
-        h="full"
-        alignItems="stretch"
-      >
+      <HStack display="flex" justifyContent="space-between" maxW="100vw">
         <Box
-          flexShrink={1}
-          w="full"
-          h="full"
-          bgColor="yellow.200"
+          w="49vw"
+          h="100%"
+          display={{ base: 'none', sm: 'none', md: 'flex' }}
         >
-          <AspectRatio ratio={1}>
+          <AspectRatio ratio={1} w="100%" display={{ sm: 'none', md: 'flex' }} h="100%">
             <Image
               src="./assets/images/signup-sidebar.jpg"
               objectFit="cover"
@@ -35,17 +29,19 @@ const Signup = () => {
         </Box>
         <VStack
           flexShrink={0}
-          w="full"
           h="full"
-          maxW="60%"
-          pt={16}
+          W={{ sm: '90vw', md: '50vw' }}
+          pt={10}
+          pl={{ base: 8, sm: 16 }}
+          m={{ sm: 'auto' }}
+          pr={{ base: 8, sm: 16 }}
           spacing={16}
         >
           <Text fontSize="3xl" fontWeight="Bold">Welcome!</Text>
           <SignupForm />
           <HStack>
             <Text>
-              Alredy registered?
+              Already registered?
             </Text>
             <Text color="green.500" textDecor="underline" _hover={{ color: 'gray.700' }}>
               <Link to="/login">Log in here!</Link>
