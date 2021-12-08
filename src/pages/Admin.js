@@ -1,14 +1,14 @@
 import Layout from '../components/Layout/Layout';
 import { useAuth } from '../utils/customHooks';
 
-const Restaurants = () => {
-  useAuth('/', ['', 'admin']);
+const Admin = () => {
+  useAuth('/restaurants', ['admin']);
 
   return (
     <Layout>
-      Hello world
+      <div>Hello world</div>
     </Layout>
   );
 };
 
-export default Restaurants;
+export default Admin;
