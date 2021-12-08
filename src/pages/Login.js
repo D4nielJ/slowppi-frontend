@@ -9,20 +9,15 @@ import { useRedirectLoggedIn } from '../utils/customHooks';
 const Login = () => {
   useRedirectLoggedIn('/restaurants');
   return (
-    <VStack h="full" spacing={0}>
+    <VStack h="100vh" spacing={0}>
       <RegistrationNavbar />
-      <HStack
-        flexShrink={0}
-        w="full"
-        h="full"
-        alignItems="stretch"
-      >
+      <HStack display="flex" justifyContent="space-between" maxW="100vw">
         <Box
-          flexShrink={1}
-          w="full"
-          h="full"
+          w="49vw"
+          h="100vh"
+          display={{ base: 'none', sm: 'none', md: 'flex' }}
         >
-          <AspectRatio ratio={1}>
+          <AspectRatio w="100%" display={{ sm: 'none', md: 'flex' }} h="100%">
             <Image
               src="./assets/images/login-sidebar.jpg"
               objectFit="cover"
@@ -33,10 +28,12 @@ const Login = () => {
         </Box>
         <VStack
           flexShrink={0}
-          w="full"
           h="full"
-          maxW="60%"
-          pt={16}
+          W={{ sm: '90vw', md: '50vw' }}
+          pt={10}
+          pl={{ base: 8, sm: 16 }}
+          m={{ sm: 'auto' }}
+          pr={{ base: 8, sm: 16 }}
           spacing={16}
         >
           <Text fontSize="3xl" fontWeight="Bold">We&apos;re glad to see you!</Text>
