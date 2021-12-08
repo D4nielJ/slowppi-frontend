@@ -17,14 +17,14 @@ const Home = () => {
       justifyContent="center"
       spacing={12}
     >
-      <Heading fontSize="7xl" letterSpacing="2.5rem" color="white">SLOWPPI</Heading>
-      <HStack spacing={8}>
+      <Heading fontSize={['3xl', '5xl', '7xl']} letterSpacing={{ base: '1rem', sm: '1.5rem', md: '2.5rem' }} color="white">SLOWPPI</Heading>
+      <HStack spacing={[1, 5, 8]}>
         <Link to="/login">
           <Button>
-            <HStack spacing={4}>
-              <Icon as={IoEnterOutline} fontSize="2xl" />
+            <HStack spacing={[1, 3, 4]}>
+              <Icon as={IoEnterOutline} fontSize={['1xl', '1xl', '2xl']} />
               <Text>Log in</Text>
-              <Icon as={IoChevronForwardCircleOutline} fontSize="2xl" />
+              <Icon as={IoChevronForwardCircleOutline} fontSize={['1xl', '1xl', '2xl']} />
             </HStack>
           </Button>
         </Link>
