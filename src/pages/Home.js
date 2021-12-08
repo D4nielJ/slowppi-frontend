@@ -1,5 +1,5 @@
 import {
-  VStack, HStack, Heading, Icon, Text,
+  VStack, HStack, Heading, Icon, Text, Stack,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { IoEnterOutline, IoChevronForwardCircleOutline } from 'react-icons/io5';
@@ -14,14 +14,14 @@ const Home = () => {
     <VStack
       minH="100vh"
       backgroundColor="yellow.300"
-      justifyContent="center"
+      justifyContent={['space-around', 'space-around', 'center']}
       spacing={12}
     >
       <Heading fontSize={['3xl', '5xl', '7xl']} letterSpacing={{ base: '1rem', sm: '1.5rem', md: '2.5rem' }} color="white">SLOWPPI</Heading>
-      <HStack spacing={[1, 5, 8]}>
+      <Stack spacing={[8]} direction={['column', 'column', 'row']}>
         <Link to="/login">
-          <Button>
-            <HStack spacing={[1, 3, 4]}>
+          <Button w="100%">
+            <HStack spacing={[4]}>
               <Icon as={IoEnterOutline} fontSize={['1xl', '1xl', '2xl']} />
               <Text>Log in</Text>
               <Icon as={IoChevronForwardCircleOutline} fontSize={['1xl', '1xl', '2xl']} />
@@ -37,7 +37,7 @@ const Home = () => {
             </HStack>
           </Button>
         </Link>
-      </HStack>
+      </Stack>
 
     </VStack>
   );
