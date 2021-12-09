@@ -5,9 +5,11 @@ const fetchRestaurantsLoading = () => ({
   type: cat.FETCH_RESTAURANTS_LOADING,
 });
 
-const fetchRestaurantsSuccess = (restaurants) => ({
+const fetchRestaurantsSuccess = (restaurants, prev, next) => ({
   type: cat.FETCH_RESTAURANTS_SUCCESS,
   restaurants,
+  prev,
+  next,
 });
 
 export const fetchRestaurantsRejected = (error) => ({
@@ -15,13 +17,18 @@ export const fetchRestaurantsRejected = (error) => ({
   error,
 });
 
-export const fetchRestaurants = (user) => async (dispatch) => {
+export const fetchRestaurants = (user, page) => async (dispatch) => {
   dispatch(fetchRestaurantsLoading());
   const api = createApi(user.token);
   try {
-    const { data } = await api.get('v1/restaurants?page=2');
+    const response = await api.get(`v1/restaurants?page=${page}`);
+    console.log(response.headers.link);
+    const prev = response.headers.link.includes('prev');
+    console.log(prev);
+    const next = response.headers.link.includes('next');
+    console.log(next);
 
-    dispatch(fetchRestaurantsSuccess(data));
+    dispatch(fetchRestaurantsSuccess(response.data), prev, next);
   } catch (err) {
     dispatch(fetchRestaurantsRejected(err));
   }
