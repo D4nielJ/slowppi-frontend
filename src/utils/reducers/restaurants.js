@@ -2,8 +2,7 @@ import { restaurantsConstants as rc } from '../constants';
 
 const initialState = {
   restaurants: [],
-  prev: null,
-  next: null,
+  page: 1,
   status: 'idle',
   error: null,
 };
@@ -16,17 +15,13 @@ const restaurantsReducer = (state = initialState, action) => {
         status: 'loading',
         error: null,
       };
-    case rc.FETCH_RESTAURANTS_SUCCESS: {
-      const { restaurants, prev, next } = action;
+    case rc.FETCH_RESTAURANTS_SUCCESS:
       return {
         ...state,
         status: 'success',
-        restaurants: [...state.restaurants, ...restaurants],
-        prev,
-        next,
+        restaurants: [...state.restaurants, ...action.restaurants],
         error: null,
       };
-    }
     case rc.FETCH_RESTAURANTS_REJECTED:
       return {
         ...state,
@@ -40,6 +35,16 @@ const restaurantsReducer = (state = initialState, action) => {
         next: null,
         status: 'idle',
         error: null,
+      };
+    case rc.SET_PAGE_INCREMENT:
+      return {
+        ...state,
+        page: state.page + 1,
+      };
+    case rc.SET_PAGE_DECREMENT:
+      return {
+        ...state,
+        page: state.page - 1,
       };
     default:
       return state;
