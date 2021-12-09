@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { VStack, Text, HStack } from '@chakra-ui/react';
+import { VStack, Text, HStack, Icon } from '@chakra-ui/react';
+import { IoPlayOutline } from 'react-icons/io5';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
 import {
@@ -60,7 +61,7 @@ const Restaurants = () => {
       >
         <VStack spacing={0}>
           <Text
-            pt={40}
+            pt={28}
             fontWeight="black"
             letterSpacing="wider"
             fontSize="4xl"
@@ -73,13 +74,29 @@ const Restaurants = () => {
             fontWeight="black"
             fontSize="xl"
           >
-            Select a Restaurant that you like!
+            Select a Restaurant that you like
           </Text>
         </VStack>
         <HStack w="full" justify="space-between">
-          <Button type="button" onClick={handlePrevPage} disabled={page === 1}>Prev</Button>
+          <Button
+            type="button"
+            onClick={handlePrevPage}
+            disabled={page === 1}
+            borderLeftRadius={0}
+            py={7}
+          >
+            <Icon as={IoPlayOutline} fontSize="2xl" transform="rotate(180deg)" />
+          </Button>
           <Carousel rests={sortedRests} />
-          <Button type="button" onClick={handleNextPage} disabled={Math.ceil(restaurants.length / 3) < page + 1}>Next</Button>
+          <Button
+            type="button"
+            onClick={handleNextPage}
+            disabled={Math.ceil(restaurants.length / 3) < page + 1}
+            borderRightRadius={0}
+            py={7}
+          >
+            <Icon as={IoPlayOutline} fontSize="2xl" />
+          </Button>
         </HStack>
       </VStack>
     </Layout>

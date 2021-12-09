@@ -1,11 +1,12 @@
+import { HStack } from '@chakra-ui/react';
 import RestCard from './RestaurantCard';
 
 const Carousel = ({ rests }) => (
-  <div>
+  <HStack spacing={28}>
     {rests && rests.map((rest) => (
       <RestCard key={rest.id} rest={rest} />
     ))}
-  </div>
+  </HStack>
 );
 
 export default Carousel;
