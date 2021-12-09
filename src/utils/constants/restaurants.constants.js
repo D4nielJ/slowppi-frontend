@@ -3,6 +3,8 @@ const restautantsConstants = {
   FETCH_RESTAURANTS_SUCCESS: 'restautants/fetchRestautants/success',
   FETCH_RESTAURANTS_REJECTED: 'restautants/fetchRestautants/rejected',
 
+  CLEAN_RESTAURANTS: 'restautants/cleanRestaurants/success',
+
   // CREATE_RESTAURANTS_LOADING: 'restautants/createRestautants/loading',
   // CREATE_RESTAURANTS_SUCCESS: 'restautants/createRestautants/success',
   // CREATE_RESTAURANTS_REJECTED: 'restautants/createRestautants/rejected',
