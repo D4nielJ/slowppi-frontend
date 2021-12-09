@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { VStack, Text, HStack } from '@chakra-ui/react';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
 import {
@@ -53,10 +54,34 @@ const Restaurants = () => {
 
   return (
     <Layout>
-      <div>Hello World</div>
-      <Button type="button" onClick={handlePrevPage} disabled={page === 1}>Prev</Button>
-      <Carousel rests={sortedRests} />
-      <Button type="button" onClick={handleNextPage} disabled={Math.ceil(restaurants.length / 3) < page + 1}>Next</Button>
+      <VStack
+        w="full"
+        spacing={24}
+      >
+        <VStack spacing={0}>
+          <Text
+            pt={40}
+            fontWeight="black"
+            letterSpacing="wider"
+            fontSize="4xl"
+          >
+            OUR BEST RESTAURANTS
+          </Text>
+          <Text
+            mb={12}
+            color="gray.500"
+            fontWeight="black"
+            fontSize="xl"
+          >
+            Select a Restaurant that you like!
+          </Text>
+        </VStack>
+        <HStack w="full" justify="space-between">
+          <Button type="button" onClick={handlePrevPage} disabled={page === 1}>Prev</Button>
+          <Carousel rests={sortedRests} />
+          <Button type="button" onClick={handleNextPage} disabled={Math.ceil(restaurants.length / 3) < page + 1}>Next</Button>
+        </HStack>
+      </VStack>
     </Layout>
   );
 };

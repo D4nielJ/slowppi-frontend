@@ -1,3 +1,3 @@
-const RestCard = ({ rest }) => (<div key={rest.id}>{rest.name}</div>);
+const RestCard = ({ rest: { id, name } }) => (<div>{name}</div>);
 
 export default RestCard;
