@@ -8,6 +8,7 @@ import {
 import Layout from '../components/Layout/Layout';
 import { useAuth } from '../utils/customHooks';
 import { Button } from '../components/shared';
+import Carousel from '../components/Restaurants/Carousel';
 
 const Restaurants = () => {
   useAuth('/', ['', 'admin']);
@@ -54,9 +55,7 @@ const Restaurants = () => {
     <Layout>
       <div>Hello World</div>
       <Button type="button" onClick={handlePrevPage} disabled={page === 1}>Prev</Button>
-      {sortedRests && sortedRests.map((rest) => (
-        <div key={rest.id}>{rest.name}</div>
-      ))}
+      <Carousel rests={sortedRests} />
       <Button type="button" onClick={handleNextPage} disabled={Math.ceil(restaurants.length / 3) < page + 1}>Next</Button>
     </Layout>
   );
