@@ -8,6 +8,11 @@ import IconCard from './IconCard';
 
 const MotionVStack = motion(VStack);
 
+const randomPosBg = () => {
+  const pos = Math.floor(Math.random() * 2);
+  return pos === 0 ? -8 : 8;
+};
+
 const RestCard = ({
   rest: {
     id, name, image, description,
@@ -27,7 +32,17 @@ const RestCard = ({
     borderColor="gray.200"
   >
     <Box position="relative">
-      <Box bgColor="green.300" position="absolute" w={32} h={32} top={-8} left={-8} rounded={16} />
+      <Box
+        bgColor="green.300"
+        position="absolute"
+        w={32}
+        h={32}
+        top={randomPosBg()}
+        left={randomPosBg()}
+        right={randomPosBg()}
+        bottom={randomPosBg()}
+        rounded={16}
+      />
       <AspectRatio w={52} ratio={1}>
         <Image src={image} alt={description} w="full" h="full" objectFit="cover" rounded={16} />
       </AspectRatio>
