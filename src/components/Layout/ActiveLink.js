@@ -26,13 +26,15 @@ const ActiveLink = ({
   return (
     <RouterLink to={to}>
       <ChakraLink
+        as="div"
         textTransform="uppercase"
         fontWeight="black"
         color="gray.700"
         fontSize="xl"
-        p={4}
-        pr={16}
-        ml={8}
+        py={3}
+        pl={4}
+        pr={10}
+        w="full"
         {...props}
         {...activeLinkProps}
       >

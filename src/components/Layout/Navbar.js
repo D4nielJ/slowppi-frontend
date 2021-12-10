@@ -22,7 +22,7 @@ const Navbar = () => {
     <VStack justifyContent="space-between" h="full" py={8} borderRight="1px" borderColor="gray.200">
       <VStack spacing={48}>
         <Heading as="h2" fontSize="xl" color="green.300" letterSpacing="widest">SLOWPPI</Heading>
-        <VStack as="nav" spacing={6} align="left">
+        <VStack as="nav" spacing={2} textAlign="left" position="relative" pl={10} align="stretch">
           <ActiveLink to="/restaurants">
             Restaurants
           </ActiveLink>
