@@ -25,6 +25,7 @@ const CreateRestaurant = () => {
   const { user } = useSelector((state) => state.currentUser);
   const { shifts } = useSelector((state) => state.shifts);
   const { categories } = useSelector((state) => state.categories);
+  // const { status } = useSelector((state) => state.restaurants); For redirect
 
   useEffect(() => {
     if (user) {
@@ -73,6 +74,7 @@ const CreateRestaurant = () => {
           name, image, description, reservationSpots, priceRange, checkedCategories, checkedShifts,
         }, { setSubmitting }) => {
           await dispatch(createRestaurant(
+            user,
             name,
             image,
             description,
@@ -81,6 +83,7 @@ const CreateRestaurant = () => {
             checkedCategories,
             checkedShifts,
           ));
+          // Redirect when success.
           setSubmitting(false);
         }}
       >
@@ -125,7 +128,7 @@ const CreateRestaurant = () => {
               <div role="group" aria-labelledby="checkbox-group">
                 {categories.map((cat) => (
                   <label key={cat.id} label="categories">
-                    <Field type="checkbox" name="checkedCategories" value={cat.name} />
+                    <Field type="checkbox" name="checkedCategories" value={cat.id.toString()} />
                     {cat.name}
                   </label>
                 ))}
@@ -134,7 +137,7 @@ const CreateRestaurant = () => {
               <div role="group" aria-labelledby="checkbox-group">
                 {shifts.map((s) => (
                   <label key={s.id} label="Shifts">
-                    <Field type="checkbox" name="checkedShifts" value={s.name} />
+                    <Field type="checkbox" name="checkedShifts" value={s.id.toString()} />
                     {s.name}
                   </label>
                 ))}
