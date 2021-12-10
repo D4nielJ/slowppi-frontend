@@ -20,7 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/restaurants" element={<Restaurants />} />
-        <Route path="/restaurant/:id" element={<RestaurantDetails />} />
+        <Route path="/restaurants/:id" element={<RestaurantDetails />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </VStack>
