@@ -1,5 +1,5 @@
 import {
-  Box, Image, Heading, VStack, AspectRatio,
+  Image, Heading, VStack, AspectRatio,
 } from '@chakra-ui/react';
 import Layout from '../components/Layout/Layout';
 
