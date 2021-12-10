@@ -1,6 +1,11 @@
 import currentUserConstants from './currentUser.constants';
+import shiftsConstants from './shifts.constants';
+import categoriesConstants from './categories.constants';
+import restaurantsConstants from './restaurants.constants';
 
-// Either change imports if no more exports in the future
-// or remove disabled once more exports
-/* eslint-disable */
-export { currentUserConstants };
+export {
+  currentUserConstants,
+  shiftsConstants,
+  categoriesConstants,
+  restaurantsConstants,
+};
