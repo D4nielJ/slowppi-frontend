@@ -5,6 +5,7 @@ import Restaurants from './Restaurants';
 import Admin from './Admin';
 import RestaurantDetails from './RestaurantDetails';
 import Construction from './Construction';
+import NoMatch from './NoMatch';
 
 export {
   Home,
@@ -14,4 +15,5 @@ export {
   Admin,
   RestaurantDetails,
   Construction,
+  NoMatch,
 };

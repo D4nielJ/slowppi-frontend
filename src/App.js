@@ -3,7 +3,7 @@ import { VStack } from '@chakra-ui/react';
 import {
   Admin,
   Construction,
-  Home, Login, RestaurantDetails, Restaurants, Signup,
+  Home, Login, RestaurantDetails, Restaurants, Signup, NoMatch,
 } from './pages';
 import '@fontsource/righteous';
 import '@fontsource/open-sans/300.css';
@@ -24,6 +24,7 @@ function App() {
         <Route path="/restaurants/:id" element={<RestaurantDetails />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/blog" element={<Construction />} />
+        <Route path="/*" element={<NoMatch />} />
       </Routes>
     </VStack>
   );
