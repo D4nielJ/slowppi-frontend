@@ -35,7 +35,6 @@ const Signup = () => {
           pl={{ base: 8, sm: 16 }}
           m={{ sm: 'auto' }}
           pr={{ base: 8, sm: 16 }}
-          spacing={16}
         >
           <Text fontSize="3xl" fontWeight="Bold">Welcome!</Text>
           <SignupForm />
