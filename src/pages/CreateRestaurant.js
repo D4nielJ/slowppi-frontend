@@ -1,22 +1,21 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Formik, Form } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import {
   VStack,
   Text,
-  Icon,
   HStack,
 } from '@chakra-ui/react';
-import { IoEnterOutline } from 'react-icons/io5';
 import PropTypes from 'prop-types';
-import { registerUser } from '../utils/actions/currentUser.actions';
 import { useAuth } from '../utils/customHooks';
 import Layout from '../components/Layout/Layout';
 import { Button } from '../components/shared';
 import { TextInput } from '../components/shared/Forms';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
+import { createRestaurant } from '../utils/actions/restaurants.actions';
+// import CheckboxInput from '../components/shared/Forms/CheckboxInput';
 
 const CreateRestaurant = () => {
   useAuth('/restaurants', ['admin']);
@@ -36,7 +35,6 @@ const CreateRestaurant = () => {
         dispatch(fetchCategories(user));
       }
     }
-    console.log(shifts, categories);
   }, [shifts, categories]);
 
   return (
@@ -48,6 +46,8 @@ const CreateRestaurant = () => {
           description: '',
           reservationSpots: '',
           priceRange: '',
+          checkedShifts: [],
+          checkedCategories: [],
         }}
         validationSchema={Yup.object({
           name: Yup.string()
@@ -70,9 +70,17 @@ const CreateRestaurant = () => {
             .required('Required'),
         })}
         onSubmit={async ({
-          firstName, lastName, email, password,
+          name, image, description, reservationSpots, priceRange, checkedCategories, checkedShifts,
         }, { setSubmitting }) => {
-          await dispatch(registerUser(firstName, lastName, email, password));
+          await dispatch(createRestaurant(
+            name,
+            image,
+            description,
+            reservationSpots,
+            priceRange,
+            checkedCategories,
+            checkedShifts,
+          ));
           setSubmitting(false);
         }}
       >
@@ -114,10 +122,27 @@ const CreateRestaurant = () => {
                 placeholder="Price Range"
               />
 
+              <div role="group" aria-labelledby="checkbox-group">
+                {categories.map((cat) => (
+                  <label key={cat.id} label="categories">
+                    <Field type="checkbox" name="checkedCategories" value={cat.name} />
+                    {cat.name}
+                  </label>
+                ))}
+              </div>
+
+              <div role="group" aria-labelledby="checkbox-group">
+                {shifts.map((s) => (
+                  <label key={s.id} label="Shifts">
+                    <Field type="checkbox" name="checkedShifts" value={s.name} />
+                    {s.name}
+                  </label>
+                ))}
+              </div>
+
               <Button type="submit" isLoading={props.isSubmitting}>
                 <HStack spacing={4}>
-                  <Text>Sign up</Text>
-                  <Icon as={IoEnterOutline} fontSize="2xl" />
+                  <Text>Create Restaurant</Text>
                 </HStack>
               </Button>
             </VStack>
