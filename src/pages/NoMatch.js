@@ -27,25 +27,24 @@ const NoMatch = () => (
           letterSpacing="2.5rem"
           color="white"
           textAlign="center"
-          mb={4}
+          mb={6}
         >
           404
         </Heading>
         <Text
           position="relative"
-          fontSize="2xl"
+          fontSize="lg"
           color="white"
           textAlign="center"
-          fontWeight="light"
           rounded="full"
           bg="green.300"
-          py={1}
+          py={2}
           px={8}
-          mb={6}
+          mb={2}
         >
           This pages does not exist
         </Text>
-        <Button as="a" href="/restaurants" fontSize="md" py={2}>Go back</Button>
+        <Button as="a" href="/restaurants" fontSize="sm" py={2}>Go back</Button>
       </Flex>
     </VStack>
   </Layout>
