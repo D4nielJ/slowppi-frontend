@@ -1,5 +1,6 @@
 import { HStack } from '@chakra-ui/react';
 import { AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
 import RestCard from './RestaurantCard';
 
 const Carousel = ({ rests }) => (
@@ -15,5 +16,9 @@ const Carousel = ({ rests }) => (
   </HStack>
 
 );
+
+Carousel.propTypes = {
+  rests: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default Carousel;

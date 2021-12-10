@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  VStack, Text, HStack, Icon, Box,
+  VStack, Text, HStack, Icon,
 } from '@chakra-ui/react';
 import { IoPlayOutline } from 'react-icons/io5';
 import { fetchShifts } from '../utils/actions/shifts.actions';

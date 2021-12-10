@@ -1,4 +1,5 @@
 import { Icon } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 const IconCard = ({ href, as }) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
@@ -15,5 +16,10 @@ const IconCard = ({ href, as }) => (
     />
   </a>
 );
+
+IconCard.propTypes = {
+  href: PropTypes.string.isRequired,
+  as: PropTypes.node.isRequired,
+};
 
 export default IconCard;

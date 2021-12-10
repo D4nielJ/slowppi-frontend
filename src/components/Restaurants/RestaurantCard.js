@@ -1,11 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { useMemo } from 'react';
 import {
-  Text, HStack, VStack, Box, Image, AspectRatio, Icon,
+  Text, HStack, VStack, Box, Image, AspectRatio,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5';
+import { IoLogoFacebook, IoLogoTwitter } from 'react-icons/io5';
 import { AiFillInstagram } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import IconCard from './IconCard';
 
 const MotionVStack = motion(VStack);
@@ -86,4 +88,16 @@ const RestCard = ({
     </MotionVStack>
   );
 };
+
+const restShape = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  image: PropTypes.string.isRequired, // A default image would be good here.
+};
+
+RestCard.propTypes = {
+  rest: PropTypes.objectOf(PropTypes.shape(restShape)).isRequired,
+};
+
 export default RestCard;
