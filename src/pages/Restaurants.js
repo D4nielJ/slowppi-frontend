@@ -17,8 +17,8 @@ import Carousel from '../components/Restaurants/Carousel';
 const Restaurants = () => {
   useAuth('/', ['', 'admin']);
   const dispatch = useDispatch();
-  const { shifts } = useSelector((state) => state.shifts);
-  const { categories } = useSelector((state) => state.categories);
+  const { shifts, status: shiftsStatus } = useSelector((state) => state.shifts);
+  const { categories, status: categoriesStatus } = useSelector((state) => state.categories);
   const { restaurants, page, status } = useSelector((state) => state.restaurants);
   const { user } = useSelector((state) => state.currentUser);
   const [sortedRests, setSortedRests] = useState([]);
@@ -30,13 +30,13 @@ const Restaurants = () => {
 
   useEffect(() => {
     if (user) {
-      if (shifts.length === 0) {
+      if (shiftsStatus !== 'loading' && shifts.length === 0) {
         dispatch(fetchShifts(user));
       }
-      if (categories.length === 0) {
+      if (categoriesStatus !== 'loading' && categories.length === 0) {
         dispatch(fetchCategories(user));
       }
-      if (status === 'idle' && restaurants.length === 0) {
+      if (status !== 'loading' && restaurants.length === 0) {
         dispatch(fetchRestaurantsInitial(user));
       }
     }

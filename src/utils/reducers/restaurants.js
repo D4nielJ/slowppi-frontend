@@ -27,7 +27,7 @@ const restaurantsReducer = (state = initialState, action) => {
       return {
         ...state,
         status: 'success',
-        selectedRestaurant: action.type,
+        selectedRestaurant: action.restaurant,
         error: null,
       };
     case rc.FETCH_RESTAURANTS_REJECTED:
