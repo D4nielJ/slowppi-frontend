@@ -59,12 +59,14 @@ const CreateRestaurant = () => {
           description: Yup.string()
             .max(180, 'Must be 180 characters or less')
             .required('Required'),
-          reservationSpots: Yup.number('Must be a positive number'),
+          reservationSpots: Yup.number()
+            .positive('Must have at least one spot available')
+            .integer('Must be an integer')
+            .required('Required'),
           priceRange: Yup.number()
-            // .integer('Must be a number')
-            // .positive('Must be a positivenumber')
-            // .min(1, 'The price range should be between 1 and 5')
-            // .max(5, 'The price range should be between 1 and 5')
+            .positive('Must have at least one spot available')
+            .lessThan(6, 'Must be a number between 1 and 5')
+            .integer('Must be an integer')
             .required('Required'),
         })}
         onSubmit={async ({
@@ -106,10 +108,10 @@ const CreateRestaurant = () => {
               />
 
               <TextInput
-                label="Password confirmation"
-                name="passwordConfirmation"
-                type="password"
-                placeholder="Password confirmation"
+                label="Price Range"
+                name="priceRange"
+                type="text"
+                placeholder="Price Range"
               />
 
               <Button type="submit" isLoading={props.isSubmitting}>
