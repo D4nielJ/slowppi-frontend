@@ -1,13 +1,18 @@
 import { restaurantsConstants as rc } from '../constants';
 import { createApi } from '../helpers';
 
-const fetchRestaurantsLoading = () => ({
+export const fetchRestaurantsLoading = () => ({
   type: rc.FETCH_RESTAURANTS_LOADING,
 });
 
-const fetchRestaurantsSuccess = (restaurants) => ({
+export const fetchRestaurantsSuccess = (restaurants) => ({
   type: rc.FETCH_RESTAURANTS_SUCCESS,
   restaurants,
+});
+
+export const fetchSingleRestSuccess = (restaurant) => ({
+  type: rc.FETCH_SINGLE_RESTAURANT_SUCCESS,
+  restaurant,
 });
 
 export const fetchRestaurantsRejected = (error) => ({
@@ -26,6 +31,17 @@ export const incrementPage = () => ({
 export const decrementPage = () => ({
   type: rc.SET_PAGE_DECREMENT,
 });
+
+export const fetchRestaurant = (user, id) => async (dispatch) => {
+  dispatch(fetchRestaurantsLoading());
+  const api = createApi(user.token);
+  try {
+    const { data } = await api.get('v1/restaurants/1');
+    dispatch(fetchRestaurantSuccess(data));
+  } catch (err) {
+    dispatch(fetchRestaurantsRejected(err));
+  }
+};
 
 export const fetchRestaurantsInitial = (user) => async (dispatch) => {
   dispatch(fetchRestaurantsLoading());

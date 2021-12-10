@@ -1,6 +1,7 @@
 import { restaurantsConstants as rc } from '../constants';
 
 const initialState = {
+  selectedRestaurant: null,
   restaurants: [],
   page: 1,
   status: 'idle',
@@ -20,6 +21,13 @@ const restaurantsReducer = (state = initialState, action) => {
         ...state,
         status: 'success',
         restaurants: [...state.restaurants, ...action.restaurants],
+        error: null,
+      };
+    case rc.FETCH_SINGLE_RESTAURANT_SUCCESS:
+      return {
+        ...state,
+        status: 'success',
+        selectedRestaurant: action.type,
         error: null,
       };
     case rc.FETCH_RESTAURANTS_REJECTED:
