@@ -3,6 +3,8 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5';
+import { AiFillInstagram } from 'react-icons/ai';
+import IconCard from './IconCard';
 
 const MotionVStack = motion(VStack);
 
@@ -13,55 +15,32 @@ const RestCard = ({
 }) => (
   <MotionVStack
     initial={{ x: 300, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    exit={{ x: -300, opacity: 0 }}
-    transition={{ type: 'spring', duration: 0.4 }}
-    spacing={4}
+    animate={{ x: 0, opacity: 1, zIndex: 1 }}
+    exit={{ x: -300, opacity: 0, zIndex: 0 }}
+    transition={{
+      x: { type: 'spring', stiffness: 300, damping: 30 },
+      opacity: { duration: 0.2 },
+    }}
+    spacing={8}
+    p={8}
+    rounded={16}
+    borderColor="gray.200"
   >
-    <AspectRatio w={52} ratio={1}>
-      <Image src={image} alt={description} w="full" h="full" objectFit="cover" />
-    </AspectRatio>
-    <Box textAlign="center">
-      <Text as="h3" mb={6} fontWeight="black" fontSize="lg" textTransform="uppercase" letterSpacing={1}>{name}</Text>
-      <Text color="gray.400" fontWeight="500">{description}</Text>
+    <Box position="relative">
+      <Box bgColor="green.300" position="absolute" w={32} h={32} top={-8} left={-8} rounded={16} />
+      <AspectRatio w={52} ratio={1}>
+        <Image src={image} alt={description} w="full" h="full" objectFit="cover" rounded={16} />
+      </AspectRatio>
     </Box>
-    <HStack spacing={5} color="gray.400">
-      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-        <Icon
-          as={IoLogoFacebook}
-          w={7}
-          h={7}
-          p={1}
-          borderWidth={2}
-          borderColor="gray.400"
-          rounded="full"
-          _hover={{ color: 'gray.500', borderColor: 'gray.500' }}
-        />
-      </a>
-      <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-        <Icon
-          as={IoLogoTwitter}
-          w={7}
-          h={7}
-          p={1}
-          borderWidth={2}
-          borderColor="gray.400"
-          rounded="full"
-          _hover={{ color: 'gray.500', borderColor: 'gray.500' }}
-        />
-      </a>
-      <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
-        <Icon
-          as={IoLogoInstagram}
-          w={7}
-          h={7}
-          p={1}
-          borderWidth={2}
-          borderColor="gray.400"
-          rounded="full"
-          _hover={{ color: 'gray.500', borderColor: 'gray.500' }}
-        />
-      </a>
+    <VStack spacing={4}>
+      <Text as="h3" fontWeight="black" fontSize="lg" textTransform="uppercase" letterSpacing={1}>{name}</Text>
+      <Box opacity="60%" borderBottom="4px" w="full" borderStyle="dotted" />
+      <Text color="gray.400" fontWeight="500">{description}</Text>
+    </VStack>
+    <HStack spacing={5}>
+      <IconCard href="https://www.facebook.com/" as={IoLogoFacebook} />
+      <IconCard href="https://twitter.com/" as={IoLogoTwitter} />
+      <IconCard href="https://instagram.com/" as={AiFillInstagram} />
     </HStack>
   </MotionVStack>
 );

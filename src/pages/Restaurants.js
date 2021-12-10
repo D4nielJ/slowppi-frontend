@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { VStack, Text, HStack, Icon } from '@chakra-ui/react';
+import {
+  VStack, Text, HStack, Icon, Box,
+} from '@chakra-ui/react';
 import { IoPlayOutline } from 'react-icons/io5';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
@@ -57,7 +59,7 @@ const Restaurants = () => {
     <Layout>
       <VStack
         w="full"
-        spacing={24}
+        spacing={16}
       >
         <VStack spacing={0}>
           <Text
@@ -70,9 +72,9 @@ const Restaurants = () => {
           </Text>
           <Text
             mb={12}
-            color="gray.500"
-            fontWeight="black"
-            fontSize="xl"
+            color="gray.400"
+            fontWeight="bold"
+            fontSize="lg"
           >
             Select a Restaurant that you like
           </Text>

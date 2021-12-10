@@ -1,20 +1,19 @@
 import { HStack } from '@chakra-ui/react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import RestCard from './RestaurantCard';
 
-const MotionHStack = motion(HStack);
-
 const Carousel = ({ rests }) => (
-
-  <MotionHStack
+  <HStack
     spacing={28}
+    pt={12}
   >
-    <AnimatePresence initial={false}>
+    <AnimatePresence initial={false} exitBeforeEnter>
       {rests && rests.map((rest) => (
         <RestCard key={rest.id} rest={rest} />
       ))}
     </AnimatePresence>
-  </MotionHStack>
+  </HStack>
+
 );
 
 export default Carousel;
