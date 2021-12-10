@@ -17,10 +17,11 @@ const calcRandomPos = () => {
   const x = Math.floor(Math.random() * 2);
   const y = Math.floor(Math.random() * 2);
   return {
-    left: x === 0 ? 'auto' : -6,
-    right: x === 0 ? -6 : 'auto',
-    top: y === 0 ? 'auto' : -6,
-    bottom: y === 0 ? -6 : 'auto',
+    left: x === 0 ? 'auto' : -8,
+    right: x === 0 ? -8 : 'auto',
+    top: y === 0 ? 'auto' : -8,
+    bottom: y === 0 ? -8 : 'auto',
+    bgColor: x === 0 ? 'green.300' : 'yellow.300',
   };
 };
 
@@ -48,13 +49,12 @@ const RestCard = ({
       <Box position="relative">
         <MotionBox
           initial={{ opacity: 0, x: -150 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={{ opacity: 0.3, x: 0 }}
           transition={{ opacity: { duration: 0.4 } }}
-          bgColor="green.300"
           position="absolute"
           w={32}
           h={32}
-          rounded={16}
+          rounded={14}
           {...randomPosition}
         />
         <Link to={`/restaurants/${id}`}>
@@ -69,7 +69,7 @@ const RestCard = ({
             as="h3"
             fontWeight="black"
             color="green.400"
-            fontSize="lg"
+            fontSize="xl"
             textTransform="uppercase"
             letterSpacing={1}
             _hover={{ textDecor: 'underline', color: 'green.500' }}
