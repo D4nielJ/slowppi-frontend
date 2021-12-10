@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { VStack } from '@chakra-ui/react';
 import {
   Admin,
+  Construction,
   Home, Login, RestaurantDetails, Restaurants, Signup,
 } from './pages';
 import '@fontsource/righteous';
@@ -22,6 +23,7 @@ function App() {
         <Route path="/restaurants" element={<Restaurants />} />
         <Route path="/restaurants/:id" element={<RestaurantDetails />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/blog" element={<Construction />} />
       </Routes>
     </VStack>
   );

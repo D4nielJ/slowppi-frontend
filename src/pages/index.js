@@ -4,7 +4,14 @@ import Signup from './Signup';
 import Restaurants from './Restaurants';
 import Admin from './Admin';
 import RestaurantDetails from './RestaurantDetails';
+import Construction from './Construction';
 
 export {
-  Home, Login, Signup, Restaurants, Admin, RestaurantDetails,
+  Home,
+  Login,
+  Signup,
+  Restaurants,
+  Admin,
+  RestaurantDetails,
+  Construction,
 };
