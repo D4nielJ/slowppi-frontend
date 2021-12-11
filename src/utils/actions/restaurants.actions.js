@@ -83,7 +83,7 @@ export const createRestaurant = (
   dispatch(fetchRestaurantsLoading());
   const api = createApi(user.token);
   try {
-    const { data } = await api.post(`v1/restaurants`, {
+    const { data } = await api.post('v1/restaurants', {
       name,
       image,
       description,
