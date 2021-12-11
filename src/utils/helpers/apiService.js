@@ -10,7 +10,7 @@ const createApi = (token = false) => {
   }
 
   const apiService = axios.create({
-    baseURL: 'http://localhost:3000/',
+    baseURL: 'http://slowppi-services.herokuapp.com/',
     headers,
   });
 
