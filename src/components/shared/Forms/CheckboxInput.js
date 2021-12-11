@@ -1,4 +1,5 @@
 import { HStack, Checkbox, CheckboxGroup } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 const CheckboxInput = (props) => {
   const { id, name } = props;
@@ -9,6 +10,11 @@ const CheckboxInput = (props) => {
       </HStack>
     </CheckboxGroup>
   );
+};
+
+CheckboxInput.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default CheckboxInput;
