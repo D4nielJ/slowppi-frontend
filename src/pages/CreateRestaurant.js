@@ -12,10 +12,10 @@ import { useAuth } from '../utils/customHooks';
 import Layout from '../components/Layout/Layout';
 import { Button } from '../components/shared';
 import { TextInput } from '../components/shared/Forms';
+import TextArea from '../components/shared/Forms/TextArea';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
 import { createRestaurant } from '../utils/actions/restaurants.actions';
-// import CheckboxInput from '../components/shared/Forms/CheckboxInput';
 
 const CreateRestaurant = () => {
   useAuth('/restaurants', ['admin']);
@@ -104,7 +104,7 @@ const CreateRestaurant = () => {
                 placeholder="Image URL"
               />
 
-              <TextInput
+              <TextArea
                 label="Description"
                 name="description"
                 type="text"
