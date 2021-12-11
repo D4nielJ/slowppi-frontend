@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import {
   VStack,
   Text,
   HStack,
+  CheckboxGroup,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { useAuth } from '../utils/customHooks';
@@ -13,6 +14,7 @@ import Layout from '../components/Layout/Layout';
 import { Button } from '../components/shared';
 import { TextInput } from '../components/shared/Forms';
 import TextArea from '../components/shared/Forms/TextArea';
+import CheckboxInput from '../components/shared/Forms/CheckboxInput';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
 import { createRestaurant } from '../utils/actions/restaurants.actions';
@@ -125,23 +127,35 @@ const CreateRestaurant = () => {
                 placeholder="Price Range"
               />
 
-              <div role="group" aria-labelledby="checkbox-group">
-                {categories.map((cat) => (
-                  <label key={cat.id} label="categories">
-                    <Field type="checkbox" name="checkedCategories" value={cat.id.toString()} />
-                    {cat.name}
-                  </label>
-                ))}
-              </div>
+              <CheckboxGroup role="group">
+                <HStack>
+                  {categories.map((cat) => (
+                    <CheckboxInput
+                      key={cat.id}
+                      id={cat.id}
+                      name="checkedCategories"
+                      label="categories"
+                      type="checkbox"
+                      description={cat.name}
+                    />
+                  ))}
+                </HStack>
+              </CheckboxGroup>
 
-              <div role="group" aria-labelledby="checkbox-group">
-                {shifts.map((s) => (
-                  <label key={s.id} label="Shifts">
-                    <Field type="checkbox" name="checkedShifts" value={s.id.toString()} />
-                    {s.name}
-                  </label>
-                ))}
-              </div>
+              <CheckboxGroup>
+                <HStack>
+                  {shifts.map((s) => (
+                    <CheckboxInput
+                      key={s.id}
+                      id={s.id}
+                      name="checkedShifts"
+                      label="shifts"
+                      type="checkbox"
+                      description={s.name}
+                    />
+                  ))}
+                </HStack>
+              </CheckboxGroup>
 
               <Button type="submit" isLoading={props.isSubmitting}>
                 <HStack spacing={4}>
