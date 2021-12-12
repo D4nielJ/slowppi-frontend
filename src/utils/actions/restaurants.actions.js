@@ -49,6 +49,7 @@ export const fetchSingleRestaurant = (user, id) => async (dispatch) => {
         },
       },
     } = await api.get(`v1/restaurants/${id}`);
+
     dispatch(fetchSingleRestSuccess({
       id, name, description, image, reservationSpots, priceRange, shifts, categories,
     }));
