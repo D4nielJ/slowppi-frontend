@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  VStack, Text, HStack, Icon,
+  VStack, Text, HStack,
 } from '@chakra-ui/react';
-import { IoPlayOutline } from 'react-icons/io5';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
 import {
@@ -11,7 +10,7 @@ import {
 } from '../utils/actions/restaurants.actions';
 import Layout from '../components/Layout/Layout';
 import { useAuth } from '../utils/customHooks';
-import { Button } from '../components/shared';
+import { NavigationButton } from '../components/shared';
 import Carousel from '../components/Restaurants/Carousel';
 
 const Restaurants = () => {
@@ -80,25 +79,12 @@ const Restaurants = () => {
           </Text>
         </VStack>
         <HStack w="full" justify="space-between">
-          <Button
-            type="button"
-            onClick={handlePrevPage}
-            disabled={page === 1}
-            borderLeftRadius={0}
-            py={7}
-          >
-            <Icon as={IoPlayOutline} fontSize="2xl" transform="rotate(180deg)" />
-          </Button>
+          <NavigationButton onClick={handlePrevPage} disabled={page === 1} isReversed />
           <Carousel rests={sortedRests} />
-          <Button
-            type="button"
+          <NavigationButton
             onClick={handleNextPage}
             disabled={Math.ceil(restaurants.length / 3) < page + 1}
-            borderRightRadius={0}
-            py={7}
-          >
-            <Icon as={IoPlayOutline} fontSize="2xl" />
-          </Button>
+          />
         </HStack>
       </VStack>
     </Layout>

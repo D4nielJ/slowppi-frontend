@@ -8,7 +8,7 @@ import { IoBookOutline, IoLogoUsd } from 'react-icons/io5';
 import Layout from '../components/Layout/Layout';
 import { fetchSingleRestaurant } from '../utils/actions/restaurants.actions';
 import { useAuth } from '../utils/customHooks';
-import { BackButton, Button } from '../components/shared';
+import { NavigationButton, Button } from '../components/shared';
 import MenuImage from '../components/Restaurants/DetailsPage/MenuImage';
 
 const RestaurantDetails = () => {
@@ -38,7 +38,7 @@ const RestaurantDetails = () => {
           <Box h="100vh" flex="1 1 65%">
             <Image src="../assets/images/details.jpg" alt={name} objectFit="cover" h="full" w="full" />
           </Box>
-          <BackButton position="absolute" bottom={60} onClick={() => { navigate(-1); }} />
+          <NavigationButton position="absolute" bottom={60} onClick={() => { navigate(-1); }} isReversed />
           <Flex
             h="full"
             direction="column"

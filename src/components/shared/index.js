@@ -1,5 +1,5 @@
 import RegistrationNavbar from './RegistrationNavbar';
 import Button from './Button';
-import BackButton from './BackButton';
+import NavigationButton from './NavigationButton';
 
-export { RegistrationNavbar, Button, BackButton };
+export { RegistrationNavbar, Button, NavigationButton };
