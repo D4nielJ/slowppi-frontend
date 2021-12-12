@@ -36,8 +36,22 @@ export const fetchSingleRestaurant = (user, id) => async (dispatch) => {
   dispatch(fetchRestaurantsLoading());
   const api = createApi(user.token);
   try {
-    const { data: { data } } = await api.get(`v1/restaurants/${id}`);
-    dispatch(fetchSingleRestSuccess(data));
+    const {
+      data: {
+        data: {
+          name,
+          description,
+          image,
+          reservation_spots: reservationSpots,
+          price_range: priceRange,
+          shifts,
+          categories,
+        },
+      },
+    } = await api.get(`v1/restaurants/${id}`);
+    dispatch(fetchSingleRestSuccess({
+      id, name, description, image, reservationSpots, priceRange, shifts, categories,
+    }));
   } catch (err) {
     dispatch(fetchRestaurantsRejected(err));
   }
