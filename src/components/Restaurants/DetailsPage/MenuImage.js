@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   AspectRatio, Image, Box, Text,
 } from '@chakra-ui/react';
@@ -24,5 +25,10 @@ const MenuImage = ({ src, name }) => (
     </Box>
   </AspectRatio>
 );
+
+MenuImage.propTypes = {
+  src: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default MenuImage;

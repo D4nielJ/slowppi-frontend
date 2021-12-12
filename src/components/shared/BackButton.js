@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import PropTypes from 'prop-types';
 import { Icon } from '@chakra-ui/react';
 import { IoPlayOutline } from 'react-icons/io5';
 import Button from './Button';
@@ -20,5 +21,15 @@ const BackButton = ({ onClick, disabled, ...props }) => (
     <Icon as={IoPlayOutline} fontSize="2xl" transform="rotate(180deg)" />
   </Button>
 );
+
+BackButton.defaultProps = {
+  onClick: () => {},
+  disabled: false,
+};
+
+BackButton.propTypes = {
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+};
 
 export default BackButton;

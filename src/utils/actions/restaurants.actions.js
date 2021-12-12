@@ -63,8 +63,9 @@ export const fetchRestaurantsInitial = (user) => async (dispatch) => {
   const api = createApi(user.token);
   try {
     const { data, headers } = await api.get(`v1/restaurants?page=${1}`);
+    let next;
     if (headers.link) {
-      const next = headers.link.includes('next');
+      next = headers.link.includes('next');
     }
     await dispatch(fetchRestaurantsSuccess(data));
     if (next) {
