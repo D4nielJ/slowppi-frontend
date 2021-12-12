@@ -12,9 +12,13 @@ const restautantsConstants = {
   // CREATE_RESTAURANTS_SUCCESS: 'restautants/createRestautants/success',
   // CREATE_RESTAURANTS_REJECTED: 'restautants/createRestautants/rejected',
 
-  // DELETE_RESTAURANTS_LOADING: 'restautants/deleteRestautants/loading',
-  // DELETE_RESTAURANTS_SUCCESS: 'restautants/deleteRestautants/success',
-  // DELETE_RESTAURANTS_REJECTED: 'restautants/deleteRestautants/rejected',
+  DELETE_RESTAURANT_LOADING: 'restautants/deleteRestautant/loading',
+  DELETE_RESTAURANT_SUCCESS: 'restautants/deleteRestautant/success',
+  DELETE_RESTAURANT_REJECTED: 'restautants/deleteRestautant/rejected',
+
+  FETCH_RESTAURANTS_DELETE_LOADING: 'restautants/fetchRestautantsDelete/loading',
+  FETCH_RESTAURANTS_DELETE_SUCCESS: 'restautants/fetchRestautantsDelete/success',
+  FETCH_RESTAURANTS_DELETE_REJECTED: 'restautants/fetchRestautantsDelete/rejected',
 };
 
 export default restautantsConstants;
