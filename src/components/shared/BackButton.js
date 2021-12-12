@@ -3,6 +3,11 @@ import { Icon } from '@chakra-ui/react';
 import { IoPlayOutline } from 'react-icons/io5';
 import Button from './Button';
 
+/*
+* Make direction prop dependant
+* Replace buttons on Restaurant page with this component
+*/
+
 const BackButton = ({ onClick, disabled, ...props }) => (
   <Button
     type="button"
