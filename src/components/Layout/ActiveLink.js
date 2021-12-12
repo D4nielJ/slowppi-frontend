@@ -16,7 +16,7 @@ const ActiveLink = ({
   }
 
   let activeLinkProps = {};
-  if (path === to) {
+  if (path.includes(to)) {
     activeLinkProps = {
       bg: 'green.300',
       color: 'white',
