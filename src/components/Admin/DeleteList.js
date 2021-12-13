@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Flex,
+  VStack,
   HStack,
   Text,
   List,
@@ -46,8 +46,8 @@ const DeleteList = ({ filteredArray }) => {
   };
 
   return (
-    <Flex m={10} direction="column">
-      <List w="500px" rounded={10} backgroundColor="gray.100">
+    <VStack>
+      <List w="full" rounded={10} backgroundColor="gray.100">
         {filteredArray.map((rest) => (
           <ListItem key={rest.id} id={rest.id} p={1} pl={3} _hover={{ backgroundColor: 'gray.300' }}>
             <HStack justify="space-between">
@@ -83,7 +83,7 @@ const DeleteList = ({ filteredArray }) => {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
-    </Flex>
+    </VStack>
   );
 };
 
