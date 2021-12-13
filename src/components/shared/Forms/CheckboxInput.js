@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import {
-  HStack,
+  FormControl,
   FormLabel,
+  FormErrorMessage,
   Checkbox,
-  CheckboxGroup,
 } from '@chakra-ui/react';
-import { Field } from 'formik';
+import { useField } from 'formik';
 import PropTypes from 'prop-types';
 
 const CheckboxInput = (props) => {
@@ -16,16 +17,16 @@ const CheckboxInput = (props) => {
     description,
   } = props;
 
+  const [field, meta] = useField(props);
+
   return (
-    <CheckboxGroup>
+    <FormControl isInvalid={meta.touched && meta.error}>
       <FormLabel srOnly htmlFor={name}>{label}</FormLabel>
-      <HStack>
-        <Checkbox>
-          <Field type={type} name={name} value={id.toString()} />
-          {description}
-        </Checkbox>
-      </HStack>
-    </CheckboxGroup>
+      <Checkbox id={name} {...field} name={name} type={type} value={id.toString()}>
+        {description}
+      </Checkbox>
+      <FormErrorMessage>{meta.error}</FormErrorMessage>
+    </FormControl>
   );
 };
 
