@@ -127,7 +127,7 @@ const CreateRestaurant = () => {
                 placeholder="Price Range"
               />
 
-              <CheckboxGroup role="group">
+              <CheckboxGroup>
                 <HStack>
                   {categories.map((cat) => (
                     <CheckboxInput
