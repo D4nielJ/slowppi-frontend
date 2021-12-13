@@ -10,9 +10,9 @@ const restautantsConstants = {
 
   CLEAN_RESTAURANTS: 'restaurants/cleanRestaurants/success',
 
-  // CREATE_RESTAURANTS_LOADING: 'restaurants/createRestautants/loading',
-  // CREATE_RESTAURANTS_SUCCESS: 'restaurants/createRestautants/success',
-  // CREATE_RESTAURANTS_REJECTED: 'restaurants/createRestautants/rejected',
+  CREATE_RESTAURANT_LOADING: 'restautants/createRestaurant/loading',
+  CREATE_RESTAURANT_SUCCESS: 'restautants/createRestaurant/success',
+  CREATE_RESTAURANT_REJECTED: 'restautants/createRestaurant/rejected',
 
   // DELETE_RESTAURANTS_LOADING: 'restaurants/deleteRestautants/loading',
   // DELETE_RESTAURANTS_SUCCESS: 'restaurants/deleteRestautants/success',
