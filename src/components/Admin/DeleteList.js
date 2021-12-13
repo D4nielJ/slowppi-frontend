@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchRestaurantsDelete, deleteRestaurant } from '../../utils/actions/restaurants.actions';
 
-const DeleteList = ({ filteredArray }) => {
+const DeleteList = ({ resetCurPage, filteredArray }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.currentUser);
   const { restaurantslist } = useSelector((state) => state.restaurants);
@@ -38,6 +38,7 @@ const DeleteList = ({ filteredArray }) => {
   const deleteRestaurantClick = () => {
     dispatch(deleteRestaurant(user, idToDelete));
     setIsOpen(false);
+    resetCurPage();
   };
 
   const openPopup = (element) => {
@@ -88,6 +89,7 @@ const DeleteList = ({ filteredArray }) => {
 };
 
 DeleteList.propTypes = {
+  resetCurPage: PropTypes.func.isRequired,
   filteredArray: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,

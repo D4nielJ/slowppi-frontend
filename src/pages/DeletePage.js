@@ -30,6 +30,10 @@ const DeletePage = () => {
     setCurPage(curPage - 1);
   };
 
+  const resetCurPage = () => {
+    setCurPage(0);
+  };
+
   // eslint-disable-next-line array-callback-return
   const filteredArrayFull = restaurantslist.filter((val) => {
     if (filtered === '') {
@@ -68,7 +72,7 @@ const DeletePage = () => {
             placeholder="search"
             onChange={(e) => { setFiltered(e.target.value); }}
           />
-          <DeleteList curPage={curPage} itemLimit={itemLimit} filteredArray={filteredArray} />
+          <DeleteList resetCurPage={resetCurPage} filteredArray={filteredArray} />
         </Flex>
         <Button
           onClick={handleNextPage}
