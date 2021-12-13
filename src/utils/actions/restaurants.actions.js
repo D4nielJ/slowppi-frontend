@@ -156,6 +156,8 @@ export const deleteRestaurant = (user, id) => async (dispatch) => {
     dispatch(deleteRestaurantSuccess(data, response.data));
   } catch (err) {
     dispatch(deleteRestaurantRejected(err));
+  }
+};
 
 export const createRestaurant = (
   user,
