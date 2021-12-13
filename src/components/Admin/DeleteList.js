@@ -66,7 +66,7 @@ const DeleteList = ({ resetCurPage, filteredArray }) => {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Delete Customer
+              Delete Restaurant
             </AlertDialogHeader>
 
             <AlertDialogBody>

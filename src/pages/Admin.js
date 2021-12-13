@@ -7,7 +7,10 @@ const Admin = () => {
   return (
     <Layout>
       <div>Hello world</div>
-      <Link to="/admin/delete">
+      <Link to="/admin/create-restaurant">
+        <button type="button">CREATE RESTAURANT</button>
+      </Link>
+      <Link to="/admin/delete-restaurant">
         <button type="button">DELETE PAGE</button>
       </Link>
     </Layout>

@@ -7,11 +7,10 @@ import {
   Text,
   Input,
 } from '@chakra-ui/react';
-import { CgChevronLeft, CgChevronRight } from 'react-icons/cg';
 import Layout from '../components/Layout/Layout';
 import { useAuth } from '../utils/customHooks';
 import DeleteList from '../components/Admin/DeleteList';
-import { Button } from '../components/shared';
+import { NavigationButton } from '../components/shared';
 
 const DeletePage = () => {
   useAuth('/restaurants', ['admin']);
@@ -49,14 +48,11 @@ const DeletePage = () => {
   return (
     <Layout>
       <HStack w="full" h="full" justify="space-between">
-        <Button
+        <NavigationButton
           onClick={handlePreviousPage}
           disabled={curPage === 0}
-          borderLeftRadius={0}
-          py={7}
-        >
-          <CgChevronLeft />
-        </Button>
+          isReversed
+        />
         <Flex h="full" direction="column" pt={20}>
           <Text
             mb={4}
@@ -74,14 +70,10 @@ const DeletePage = () => {
           />
           <DeleteList resetCurPage={resetCurPage} filteredArray={filteredArray} />
         </Flex>
-        <Button
+        <NavigationButton
           onClick={handleNextPage}
           disabled={curPage === Math.ceil(filteredArrayFull.length / itemLimit) - 1}
-          borderRightRadius={0}
-          py={7}
-        >
-          <CgChevronRight />
-        </Button>
+        />
       </HStack>
     </Layout>
   );
