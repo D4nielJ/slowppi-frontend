@@ -15,9 +15,14 @@ const fetchRestaurantsLoading = () => ({
   type: rc.FETCH_RESTAURANTS_LOADING,
 });
 
-const fetchRestaurantsSuccess = (restaurants) => ({
+export const fetchRestaurantsSuccess = (restaurants) => ({
   type: rc.FETCH_RESTAURANTS_SUCCESS,
   restaurants,
+});
+
+export const fetchSingleRestSuccess = (restaurant) => ({
+  type: rc.FETCH_SINGLE_RESTAURANT_SUCCESS,
+  restaurant,
 });
 
 export const fetchRestaurantsRejected = (error) => ({
@@ -26,7 +31,7 @@ export const fetchRestaurantsRejected = (error) => ({
 });
 
 export const cleanRestaurants = () => ({
-  type: rc.SET_PAGE_INCREMENT,
+  type: rc.CLEAN_RESTAURANTS,
 });
 
 export const incrementPage = () => ({
@@ -37,12 +42,41 @@ export const decrementPage = () => ({
   type: rc.SET_PAGE_DECREMENT,
 });
 
+export const fetchSingleRestaurant = (user, id) => async (dispatch) => {
+  dispatch(fetchRestaurantsLoading());
+  const api = createApi(user.token);
+  try {
+    const {
+      data: {
+        data: {
+          name,
+          description,
+          image,
+          reservation_spots: reservationSpots,
+          price_range: priceRange,
+          shifts,
+          categories,
+        },
+      },
+    } = await api.get(`v1/restaurants/${id}`);
+
+    dispatch(fetchSingleRestSuccess({
+      id, name, description, image, reservationSpots, priceRange, shifts, categories,
+    }));
+  } catch (err) {
+    dispatch(fetchRestaurantsRejected(err));
+  }
+};
+
 export const fetchRestaurantsInitial = (user) => async (dispatch) => {
   dispatch(fetchRestaurantsLoading());
   const api = createApi(user.token);
   try {
     const { data, headers } = await api.get(`v1/restaurants?page=${1}`);
-    const next = headers.link.includes('next');
+    let next;
+    if (headers.link) {
+      next = headers.link.includes('next');
+    }
     await dispatch(fetchRestaurantsSuccess(data));
     if (next) {
       const { data } = await api.get(`v1/restaurants?page=${2}`);
