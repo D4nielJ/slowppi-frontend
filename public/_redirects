@@ -1,2 +1,1 @@
-http://slowppi-services.herokuapp.com/* http://slowppi-services.herokuapp.com/:splat 200
-/* /index.html 200
+/*    /index.html   200
