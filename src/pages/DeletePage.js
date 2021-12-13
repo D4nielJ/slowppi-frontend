@@ -1,6 +1,12 @@
+/* eslint-disable consistent-return */
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { HStack, VStack, Text } from '@chakra-ui/react';
+import {
+  HStack,
+  VStack,
+  Text,
+  Input,
+} from '@chakra-ui/react';
 import { CgChevronLeft, CgChevronRight } from 'react-icons/cg';
 import Layout from '../components/Layout/Layout';
 import { useAuth } from '../utils/customHooks';
@@ -13,6 +19,9 @@ const DeletePage = () => {
   const itemLimit = 12;
   const [curPage, setCurPage] = useState(0);
 
+  const offset = curPage * itemLimit;
+  const [filtered, setFiltered] = useState('');
+
   const handleNextPage = () => {
     setCurPage(curPage + 1);
   };
@@ -20,6 +29,18 @@ const DeletePage = () => {
   const handlePreviousPage = () => {
     setCurPage(curPage - 1);
   };
+
+  // eslint-disable-next-line array-callback-return
+  const filteredArrayFull = restaurantslist.filter((val) => {
+    if (filtered === '') {
+      return val;
+    }
+    if (val.name.toLowerCase().includes(filtered.toLowerCase())) {
+      return val;
+    }
+  });
+
+  const filteredArray = filteredArrayFull.slice(offset, offset + itemLimit);
 
   return (
     <Layout>
@@ -34,11 +55,12 @@ const DeletePage = () => {
         </Button>
         <VStack>
           <Text>DELETE RESTAURANTS LIST</Text>
-          <DeleteList curPage={curPage} itemLimit={itemLimit} />
+          <Input placeholder="search" onChange={(e) => { setFiltered(e.target.value); }} />
+          <DeleteList curPage={curPage} itemLimit={itemLimit} filteredArray={filteredArray} />
         </VStack>
         <Button
           onClick={handleNextPage}
-          disabled={curPage === Math.ceil(restaurantslist.length / itemLimit) - 1}
+          disabled={curPage === Math.ceil(filteredArrayFull.length / itemLimit) - 1}
           borderRightRadius={0}
           py={7}
         >

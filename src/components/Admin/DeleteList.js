@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  VStack,
+  Flex,
   HStack,
   Text,
   List,
@@ -17,11 +17,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchRestaurantsDelete, deleteRestaurant } from '../../utils/actions/restaurants.actions';
 
-const DeleteList = ({ curPage, itemLimit }) => {
+const DeleteList = ({ filteredArray }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.currentUser);
   const { restaurantslist } = useSelector((state) => state.restaurants);
-  const [curItems, setCurItems] = useState([]);
 
   const [isOpen, setIsOpen] = React.useState(false);
   const onClose = () => setIsOpen(false);
@@ -41,24 +40,15 @@ const DeleteList = ({ curPage, itemLimit }) => {
     setIsOpen(false);
   };
 
-  useEffect(() => {
-    const offset = curPage * itemLimit;
-    const getList = (curPage, itemLimit) => {
-      setCurItems(restaurantslist.slice(offset, offset + itemLimit));
-    };
-
-    getList(curPage, itemLimit);
-  }, [curPage, itemLimit, restaurantslist]);
-
   const openPopup = (element) => {
     setIdToDelete(element.target.parentNode.parentNode.id);
     setIsOpen(true);
   };
 
   return (
-    <VStack m={10}>
+    <Flex m={10} direction="column">
       <List w="500px" rounded={10} backgroundColor="gray.100">
-        {curItems.map((rest) => (
+        {filteredArray.map((rest) => (
           <ListItem key={rest.id} id={rest.id} p={1} pl={3} _hover={{ backgroundColor: 'gray.300' }}>
             <HStack justify="space-between">
               <Text as="h3" fontWeight="bold" color="gray.700" fontSize={20}>{rest.name}</Text>
@@ -93,13 +83,15 @@ const DeleteList = ({ curPage, itemLimit }) => {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
-    </VStack>
+    </Flex>
   );
 };
 
 DeleteList.propTypes = {
-  curPage: PropTypes.number.isRequired,
-  itemLimit: PropTypes.number.isRequired,
+  filteredArray: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default DeleteList;

@@ -108,7 +108,6 @@ export const deleteRestaurant = (user, id) => async (dispatch) => {
     await api.delete(`v1/restaurants/${id}`);
     const { data } = await api.get('v1/eliminate');
     const response = await api.get('v1/restaurants?page=1&per_page=6');
-    console.log(response);
 
     dispatch(deleteRestaurantSuccess(data, response.data));
   } catch (err) {
