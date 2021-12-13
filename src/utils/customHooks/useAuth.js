@@ -8,7 +8,7 @@ const useAuth = (to = '/restaurants', roles) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
-      navigate('/login', { replace: true });
+      navigate('/', { replace: true });
     }
     if (!hasSomeRole(user, roles)) {
       navigate(to, { replace: true });
