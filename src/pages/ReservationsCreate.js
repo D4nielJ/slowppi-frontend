@@ -8,7 +8,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { format } from 'date-fns';
 import Layout from '../components/Layout/Layout';
-import DateStripe from '../components/ReservationsCreate/DateStripe';
 import { createApi } from '../utils/helpers';
 import { useAuth } from '../utils/customHooks';
 import { fetchShifts } from '../utils/actions/shifts.actions';
