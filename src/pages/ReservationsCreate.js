@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import {
   Box, HStack, Text, VStack,
 } from '@chakra-ui/react';
+import ReactDatePicker from 'react-datepicker';
 import Layout from '../components/Layout/Layout';
 import DateStripe from '../components/ReservationsCreate/DateStripe';
 
@@ -11,9 +12,7 @@ const ReservationsCreate = () => {
   return (
     <Layout>
       <VStack h="100vh" justify="center">
-        <Box mb={4}>
-          <DateStripe date={date} setDate={setDate} />
-        </Box>
+        <ReactDatePicker selected={date} onChange={(date) => setDate(date)} />
         <Text fontSize="xl">{date.toDateString()}</Text>
       </VStack>
     </Layout>
@@ -21,3 +20,7 @@ const ReservationsCreate = () => {
 };
 
 export default ReservationsCreate;
+
+// <Box mb={4}>
+//   <DateStripe date={date} setDate={setDate} />
+// </Box>;
