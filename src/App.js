@@ -12,6 +12,8 @@ import {
   NoMatch,
   CreateRestaurant,
   ReservationsCreate,
+  DeletePage,
+  Reservations,
 } from './pages';
 
 import '@fontsource/righteous';
@@ -21,7 +23,6 @@ import '@fontsource/open-sans/500.css';
 import '@fontsource/open-sans/600.css';
 import '@fontsource/open-sans/700.css';
 import '@fontsource/open-sans/800.css';
-import DeletePage from './pages/DeletePage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/restaurants/:id" element={<RestaurantDetails />} />
         <Route path="/restaurants/:id/reserve" element={<ReservationsCreate />} />
         <Route path="/restaurants/create" element={<CreateRestaurant />} />
+        <Route path="/reservations" element={<Reservations />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/create-restaurant" element={<CreateRestaurant />} />
         <Route path="/admin/delete-restaurant" element={<DeletePage />} />
