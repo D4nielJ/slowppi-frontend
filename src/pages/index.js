@@ -8,6 +8,8 @@ import Construction from './Construction';
 import NoMatch from './NoMatch';
 import CreateRestaurant from './CreateRestaurant';
 import ReservationsCreate from './ReservationsCreate';
+import Reservations from './Reservations';
+import DeletePage from './DeletePage';
 
 export {
   Home,
@@ -19,5 +21,7 @@ export {
   Construction,
   NoMatch,
   CreateRestaurant,
+  Reservations,
   ReservationsCreate,
+  DeletePage,
 };
