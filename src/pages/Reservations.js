@@ -4,8 +4,9 @@ import {
   HStack,
   Flex,
   Text,
-  UnorderedList,
+  List,
   ListItem,
+  Button,
 } from '@chakra-ui/react';
 import { useAuth } from '../utils/customHooks';
 import Layout from '../components/Layout/Layout';
@@ -15,6 +16,7 @@ const Reservations = () => {
   useAuth('/', ['', 'admin']);
 
   const { user } = useSelector((state) => state.currentUser);
+  const { restaurants } = useSelector((state) => state.restaurants);
 
   const [reservationsAvail, setReservationsAvail] = useState(null);
 
@@ -34,6 +36,9 @@ const Reservations = () => {
     }
   }, []);
 
+  console.log(restaurants)
+  console.log(reservationsAvail)
+
   return (
     <Layout>
       <HStack w="full" h="full" justify="space-between">
@@ -46,13 +51,16 @@ const Reservations = () => {
           >
             RESERVATIONS
           </Text>
-          <UnorderedList>
             {reservationsAvail && reservationsAvail.map((res) => (
-              <ListItem key={res.id}>
-                
-              </ListItem>
+              <List w="full" rounded={10} backgroundColor="gray.100">
+                <ListItem key={res.id} id={res.id} p={1} pl={3}>
+                <HStack justify="space-between">
+                  <Text as="h3" fontWeight="bold" color="gray.700" fontSize={20}></Text>
+                  <Button colorScheme="red" variant="ghost" type="button">DELETE</Button>
+                </HStack>
+               </ListItem>
+              </List>
             ))}
-          </UnorderedList>
         </Flex>
       </HStack>
     </Layout>
