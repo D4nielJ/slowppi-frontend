@@ -17,7 +17,6 @@ const RestaurantDetails = () => {
   const navigate = useNavigate();
 
   let { id } = useParams();
-  id = +id;
 
   const { user } = useSelector((state) => state.currentUser);
   const { selectedRestaurant } = useSelector((state) => state.restaurants);
@@ -25,6 +24,7 @@ const RestaurantDetails = () => {
 
   useEffect(() => {
     if (user) {
+      id = +id;
       if (!selectedRestaurant || (selectedRestaurant && selectedRestaurant.id !== id)) {
         dispatch(fetchSingleRestaurant(user, id));
       }
@@ -38,7 +38,7 @@ const RestaurantDetails = () => {
           <Box h="100vh" flex="1 1 65%">
             <Image src="../assets/images/details.jpg" alt={name} objectFit="cover" h="full" w="full" />
           </Box>
-          <NavigationButton position="absolute" bottom={60} onClick={() => { navigate(-1); }} isReversed />
+          <NavigationButton position="absolute" bottom={40} onClick={() => { navigate(-1); }} isReversed />
           <Flex
             h="full"
             direction="column"
@@ -71,7 +71,7 @@ const RestaurantDetails = () => {
               <MenuImage src="../assets/images/sushi/sushi3.jpg" name="Nigirizushi" />
               <MenuImage src="../assets/images/sushi/sushi4.jpg" name="Uramaki" />
             </Grid>
-            <Button mb={8}>
+            <Button as="a" mb={8} href={`/restaurants/${id}/reserve`}>
               <HStack spacing={2}>
                 <Icon as={IoBookOutline} fontSize="2xl" />
                 <Text>Reservations</Text>
