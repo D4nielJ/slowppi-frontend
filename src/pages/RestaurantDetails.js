@@ -38,7 +38,7 @@ const RestaurantDetails = () => {
           <Box h="100vh" flex="1 1 65%">
             <Image src="../assets/images/details.jpg" alt={name} objectFit="cover" h="full" w="full" />
           </Box>
-          <NavigationButton position="absolute" bottom={60} onClick={() => { navigate(-1); }} isReversed />
+          <NavigationButton position="absolute" bottom={40} onClick={() => { navigate(-1); }} isReversed />
           <Flex
             h="full"
             direction="column"

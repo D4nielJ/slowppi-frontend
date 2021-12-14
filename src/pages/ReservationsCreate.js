@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  Box, HStack, Text, VStack,
+  Box, HStack, Text, Flex, Image,
 } from '@chakra-ui/react';
 import ReactDatePicker from 'react-datepicker';
 import addDays from 'date-fns/addDays';
@@ -12,6 +12,7 @@ import DateStripe from '../components/ReservationsCreate/DateStripe';
 import { createApi } from '../utils/helpers';
 import { useAuth } from '../utils/customHooks';
 import { fetchShifts } from '../utils/actions/shifts.actions';
+import { NavigationButton } from '../components/shared';
 
 const ReservationsCreate = () => {
   useAuth('/restaurants', ['', 'admin']);
@@ -23,7 +24,7 @@ const ReservationsCreate = () => {
   const { user } = useSelector((state) => state.currentUser);
 
   const { shifts } = useSelector((state) => state.shifts);
-  const [date, setDate] = useState(addDays(new Date(), 1));
+  const [date, setDate] = useState(new Date());
   const [shiftsAvailable, setShiftsAvailable] = useState(null);
   const [error, setError] = useState(null);
 
@@ -69,36 +70,50 @@ const ReservationsCreate = () => {
 
   useEffect(() => {
     if (reservationStatus === 'created') {
-      navigate('/', { replace: true });
+      navigate('/reservations', { replace: true });
     }
   });
 
   return (
     <Layout>
-      <VStack h="100vh" pt={28}>
-        <ReactDatePicker
-          selected={date}
-          onChange={(date) => setDate(date)}
-          includeDateIntervals={[
-            { start: new Date(), end: addDays(new Date(), 30) },
-          ]}
-        />
-        {error && (
+      <HStack h="100vh" spacing={0} position="relative">
+        <Box h="100vh" flex="1 1 65%">
+          <Image src="../../assets/images/details.jpg" alt="" objectFit="cover" h="full" w="full" />
+        </Box>
+        <NavigationButton position="absolute" bottom={40} onClick={() => { navigate(-1); }} isReversed />
+        <Flex
+          h="full"
+          direction="column"
+          flex="1 0 600px"
+          alignItems="center"
+          pt={24}
+          px={24}
+          overflow="auto"
+        >
+          <ReactDatePicker
+            selected={date}
+            onChange={(date) => setDate(date)}
+            includeDateIntervals={[
+              { start: new Date(), end: addDays(new Date(), 30) },
+            ]}
+          />
+          {error && (
           <Text>
             Something went bad
             {' '}
             {error.status}
           </Text>
-        )}
-        {shiftsAvailable && !error && (
-          Object.keys(shiftsAvailable).map((shift) => (
-            <div key={shift}>
-              <Text>{shift}</Text>
-              <button type="button" onClick={() => handleReservation(shift)}>Make reservation</button>
-            </div>
-          ))
-        )}
-      </VStack>
+          )}
+          {shiftsAvailable && !error && (
+            Object.keys(shiftsAvailable).map((shift) => (
+              <div key={shift}>
+                <Text>{shift}</Text>
+                <button type="button" onClick={() => handleReservation(shift)}>Make reservation</button>
+              </div>
+            ))
+          )}
+        </Flex>
+      </HStack>
     </Layout>
   );
 };
