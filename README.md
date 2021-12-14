@@ -23,6 +23,8 @@ React application that allows users to make reservations consuming the [Slowpi B
 
 - [Slowppi](https://slowppi.netlify.app/)
 
+- [Backend](https://github.com/leonardodiasb/final-capstone-back-end)
+
 ### Available Scripts
 
 - Clone this repository
