@@ -35,12 +35,8 @@ const Reservations = () => {
 
   const api = createApi(user.token);
   const fetchReservations = async () => {
-    try {
-      const { data } = await api.get('v1/reservations/');
-      setReservationsAvail(data);
-    } catch (error) {
-      console.log(error);
-    }
+    const { data } = await api.get('v1/reservations/');
+    setReservationsAvail(data);
   };
 
   useEffect(() => {
