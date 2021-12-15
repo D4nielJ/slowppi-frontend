@@ -39,8 +39,11 @@ const Restaurants = () => {
         dispatch(fetchRestaurantsInitial(user));
       }
     }
+  }, [shifts, categories, restaurants, user]);
+
+  useEffect(() => {
     sortRests(page);
-  }, [shifts, categories, restaurants, user, page]);
+  }, [sortRests, page]);
 
   const handleNextPage = () => {
     if (Math.ceil(restaurants.length / 3) < page + 2) {

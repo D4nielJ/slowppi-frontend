@@ -37,11 +37,12 @@ const restaurantsReducer = (state = initialState, action) => {
         status: 'error',
         error: action.error,
       };
-    case rc.CLEAN_RESTAURANTS:
+    case rc.CLEAN_RESTAURANTS: // Update and implement
       return {
+        selectedRestaurant: null,
         restaurants: [],
-        prev: null,
-        next: null,
+        restaurantslist: [],
+        page: 1,
         status: 'idle',
         error: null,
       };

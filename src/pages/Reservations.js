@@ -33,7 +33,9 @@ const Reservations = () => {
   const cancelRef = useRef(null);
   const [resToDelete, setResToDelete] = useState(null);
 
-  const api = createApi(user.token);
+  const { token } = user ?? { token: null };
+  const api = createApi(token);
+
   const fetchReservations = async () => {
     const { data } = await api.get('v1/reservations/');
     setReservationsAvail(data);
@@ -59,9 +61,7 @@ const Reservations = () => {
   });
 
   const handleCancelReservation = () => {
-    const { token } = user ?? null;
     const cancelReservation = async () => {
-      const api = createApi(token);
       await api.delete(`v1/reservations/${resToDelete}`);
       fetchReservations();
     };
