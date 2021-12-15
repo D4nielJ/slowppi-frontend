@@ -14,7 +14,7 @@ import { NavigationButton } from '../components/shared';
 
 const DeletePage = () => {
   useAuth('/restaurants', ['admin']);
-  const { restaurantslist } = useSelector((state) => state.restaurants);
+  const { restaurantsList } = useSelector((state) => state.restaurants);
   const itemLimit = 10;
   const [curPage, setCurPage] = useState(0);
 
@@ -34,7 +34,7 @@ const DeletePage = () => {
   };
 
   // eslint-disable-next-line array-callback-return
-  const filteredArrayFull = restaurantslist.filter((val) => {
+  const filteredArrayFull = restaurantsList.filter((val) => {
     if (filtered === '') {
       return val;
     }

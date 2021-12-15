@@ -3,7 +3,7 @@ import { restaurantsConstants as rc } from '../constants';
 const initialState = {
   selectedRestaurant: null,
   restaurants: [],
-  restaurantslist: [],
+  restaurantsList: [],
   page: 1,
   status: 'idle',
   error: null,
@@ -41,7 +41,7 @@ const restaurantsReducer = (state = initialState, action) => {
       return {
         selectedRestaurant: null,
         restaurants: [],
-        restaurantslist: [],
+        restaurantsList: [],
         page: 1,
         status: 'idle',
         error: null,
@@ -66,7 +66,7 @@ const restaurantsReducer = (state = initialState, action) => {
       return {
         ...state,
         status: 'success',
-        restaurantslist: action.restaurantslist,
+        restaurantsList: action.restaurantsList,
         error: null,
       };
     case rc.FETCH_RESTAURANTS_DELETE_REJECTED:
@@ -85,7 +85,7 @@ const restaurantsReducer = (state = initialState, action) => {
       return {
         ...state,
         restaurants: action.restaurants,
-        restaurantslist: action.restaurantslist,
+        restaurantsList: action.restaurantsList,
         page: 1,
         status: 'success',
         error: null,

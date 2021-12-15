@@ -46,9 +46,9 @@ const fetchRestaurantsDeleteLoading = () => ({
   type: rc.FETCH_RESTAURANTS_DELETE_LOADING,
 });
 
-const fetchRestaurantsDeleteSuccess = (restaurantslist) => ({
+const fetchRestaurantsDeleteSuccess = (restaurantsList) => ({
   type: rc.FETCH_RESTAURANTS_DELETE_SUCCESS,
-  restaurantslist,
+  restaurantsList,
 });
 
 export const fetchRestaurantsDeleteRejected = (error) => ({
@@ -60,9 +60,9 @@ const deleteRestaurantLoading = () => ({
   type: rc.DELETE_RESTAURANT_LOADING,
 });
 
-const deleteRestaurantSuccess = (restaurantslist, restaurants) => ({
+const deleteRestaurantSuccess = (restaurantsList, restaurants) => ({
   type: rc.DELETE_RESTAURANT_SUCCESS,
-  restaurantslist,
+  restaurantsList,
   restaurants,
 });
 

@@ -25,7 +25,7 @@ const Reservations = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.currentUser);
-  const { restaurantslist } = useSelector((state) => state.restaurants);
+  const { restaurantsList } = useSelector((state) => state.restaurants);
 
   const [reservationsAvail, setReservationsAvail] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -49,14 +49,14 @@ const Reservations = () => {
 
   useEffect(() => {
     if (user) {
-      if (restaurantslist.length === 0) {
+      if (restaurantsList.length === 0) {
         dispatch(fetchRestaurantsDelete(user));
       }
     }
-  }, [restaurantslist]);
+  }, [restaurantsList]);
 
   const restaurantsSerialize = {};
-  restaurantslist.forEach(({ id, name }) => {
+  restaurantsList.forEach(({ id, name }) => {
     restaurantsSerialize[id] = name;
   });
 

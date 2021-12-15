@@ -20,7 +20,7 @@ import { fetchRestaurantsDelete, deleteRestaurant } from '../../utils/actions/re
 const DeleteList = ({ resetCurPage, filteredArray }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.currentUser);
-  const { restaurantslist } = useSelector((state) => state.restaurants);
+  const { restaurantsList } = useSelector((state) => state.restaurants);
 
   const [isOpen, setIsOpen] = React.useState(false);
   const onClose = () => setIsOpen(false);
@@ -29,11 +29,11 @@ const DeleteList = ({ resetCurPage, filteredArray }) => {
 
   useEffect(() => {
     if (user) {
-      if (restaurantslist.length === 0) {
+      if (restaurantsList.length === 0) {
         dispatch(fetchRestaurantsDelete(user));
       }
     }
-  }, [restaurantslist]);
+  }, [restaurantsList]);
 
   const deleteRestaurantClick = () => {
     dispatch(deleteRestaurant(user, idToDelete));
