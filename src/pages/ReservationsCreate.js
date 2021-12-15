@@ -27,6 +27,9 @@ const ReservationsCreate = () => {
   const [shiftsAvailable, setShiftsAvailable] = useState(null);
   const [error, setError] = useState(null);
 
+  const { token } = user ?? { token: null };
+  const api = createApi(token);
+
   useEffect(() => {
     if (user && shifts.length === 0) {
       dispatch(fetchShifts(user));
@@ -34,8 +37,6 @@ const ReservationsCreate = () => {
   }, [user, shifts]);
 
   useEffect(() => {
-    const { token } = user ?? null;
-    const api = createApi(token);
     const fetchFreeSpots = async () => {
       try {
         const { data: { body } } = await api.get(`v1/restaurants/${id}/availability/${format(date, 'yyyy-MM-dd')}`);
@@ -54,9 +55,7 @@ const ReservationsCreate = () => {
 
   const handleReservation = (shiftName) => {
     const [{ name: shift }] = shifts.filter((shift) => shift.name === shiftName);
-    const { token } = user ?? null;
     const postReservation = async () => {
-      const api = createApi(token);
       const { data: { status } } = await api.post('v1/reservations', {
         date: format(date, 'yyyy-MM-dd'),
         shift,
