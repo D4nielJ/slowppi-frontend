@@ -4,6 +4,7 @@ import { useAuth } from '../utils/customHooks';
 
 const Admin = () => {
   useAuth('/restaurants', ['admin']);
+
   return (
     <Layout>
       <div>Hello world</div>
