@@ -9,9 +9,10 @@ import Layout from '../components/Layout/Layout';
 import { createApi } from '../utils/helpers';
 import { useAuth } from '../utils/customHooks';
 import { fetchShifts } from '../utils/actions/shifts.actions';
-import { LeftBigImage } from '../components/shared';
+import { Button, LeftBigImage } from '../components/shared';
 import Header from '../components/ReservationsCreate/Header';
 import ShiftsRow from '../components/ReservationsCreate/ShiftsRow';
+import { fetchSingleRestaurant } from '../utils/actions/restaurants.actions';
 
 const ReservationsCreate = () => {
   useAuth('/restaurants', ['', 'admin']);
@@ -19,14 +20,13 @@ const ReservationsCreate = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { id } = useParams();
+  let { id } = useParams();
   const { user } = useSelector((state) => state.currentUser);
 
   const { shifts } = useSelector((state) => state.shifts);
   const [date, setDate] = useState(new Date());
   const [shiftsAvailable, setShiftsAvailable] = useState(null);
   const [error, setError] = useState(null);
-  console.log(shiftsAvailable);
 
   const { token } = user ?? { token: null };
   const api = createApi(token);
@@ -73,6 +73,18 @@ const ReservationsCreate = () => {
     }
   });
 
+  const { selectedRestaurant } = useSelector((state) => state.restaurants);
+  const { name } = selectedRestaurant ?? { name: 'Something went bad' };
+
+  useEffect(() => {
+    if (user) {
+      id = +id;
+      if (!selectedRestaurant || (selectedRestaurant && selectedRestaurant.id !== id)) {
+        dispatch(fetchSingleRestaurant(user, id));
+      }
+    }
+  }, [id, selectedRestaurant, user]);
+
   return (
     <Layout>
       <HStack h="100vh" spacing={0} position="relative">
@@ -84,7 +96,7 @@ const ReservationsCreate = () => {
           alignItems="center"
           overflow="auto"
         >
-          <Header date={date} setDate={setDate} />
+          <Header name={name} date={date} setDate={setDate} />
           {error && (
           <Text>
             Ups! We&apos;re sorry. Something went bad.
@@ -93,10 +105,18 @@ const ReservationsCreate = () => {
           <VStack w="full" px={24} py={12} spacing={6}>
             {shiftsAvailable && !error && (
               Object.keys(shiftsAvailable).map((shift) => (
-                <ShiftsRow key={shift} shift={shift} shiftsAvailable={shiftsAvailable} handleReservation={handleReservation} />
+                <ShiftsRow
+                  key={shift}
+                  shift={shift}
+                  shiftsAvailable={shiftsAvailable}
+                  handleReservation={handleReservation}
+                />
               ))
             )}
           </VStack>
+          <Button as="a" href="/reservations">
+            <Text>Your reservations</Text>
+          </Button>
         </Flex>
       </HStack>
     </Layout>
