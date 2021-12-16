@@ -1,6 +1,7 @@
 import {
   Text, Box, Image, AspectRatio,
 } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 const IMAGE_MAP = {
   Breakfast: '../../assets/images/shifts/breakfast.jpg',
@@ -57,6 +58,12 @@ const ShiftsRow = ({ shift, handleReservation, shiftsAvailable }) => {
       </AspectRatio>
     </Box>
   );
+};
+
+ShiftsRow.propTypes = {
+  shift: PropTypes.string.isRequired,
+  shiftsAvailable: PropTypes.objectOf(PropTypes.number).isRequired,
+  handleReservation: PropTypes.func.isRequired,
 };
 
 export default ShiftsRow;

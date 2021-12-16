@@ -3,6 +3,7 @@ import ReactDatePicker from 'react-datepicker';
 import addDays from 'date-fns/addDays';
 import { IoCalendarOutline } from 'react-icons/io5';
 import { Icon, AspectRatio } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 import { Button } from '../shared';
 
 const ChakraInput = forwardRef(({ onClick }, ref) => (
@@ -32,5 +33,18 @@ const DatePicker = ({ date, setDate }) => (
     customInput={<ChakraInput />}
   />
 );
+
+DatePicker.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
+  setDate: PropTypes.func.isRequired,
+};
+
+ChakraInput.defaultProps = {
+  onClick: () => {},
+};
+
+ChakraInput.propTypes = {
+  onClick: PropTypes.func,
+};
 
 export default DatePicker;

@@ -2,6 +2,7 @@ import {
   VStack, Box, HStack, Text,
 } from '@chakra-ui/react';
 import { format as formatDate } from 'date-fns';
+import PropTypes from 'prop-types';
 import DatePicker from './DatePicker';
 
 const Header = ({ date, setDate, name }) => (
@@ -33,5 +34,11 @@ const Header = ({ date, setDate, name }) => (
     </HStack>
   </VStack>
 );
+
+Header.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
+  setDate: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default Header;
