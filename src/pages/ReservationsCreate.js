@@ -6,12 +6,13 @@ import ReactDatePicker from 'react-datepicker';
 import addDays from 'date-fns/addDays';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { format } from 'date-fns';
+import { format as formatDate } from 'date-fns';
 import Layout from '../components/Layout/Layout';
 import { createApi } from '../utils/helpers';
 import { useAuth } from '../utils/customHooks';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { NavigationButton } from '../components/shared';
+import DatePicker from '../components/ReservationsCreate/DatePicker';
 
 const ReservationsCreate = () => {
   useAuth('/restaurants', ['', 'admin']);
@@ -39,7 +40,7 @@ const ReservationsCreate = () => {
   useEffect(() => {
     const fetchFreeSpots = async () => {
       try {
-        const { data: { body } } = await api.get(`v1/restaurants/${id}/availability/${format(date, 'yyyy-MM-dd')}`);
+        const { data: { body } } = await api.get(`v1/restaurants/${id}/availability/${formatDate(date, 'yyyy-MM-dd')}`);
         setShiftsAvailable(body);
         setError(null);
       } catch (err) {
@@ -57,7 +58,7 @@ const ReservationsCreate = () => {
     const [{ name: shift }] = shifts.filter((shift) => shift.name === shiftName);
     const postReservation = async () => {
       const { data: { status } } = await api.post('v1/reservations', {
-        date: format(date, 'yyyy-MM-dd'),
+        date: formatDate(date, 'yyyy-MM-dd'),
         shift,
         restaurant_id: +id,
       });
@@ -88,13 +89,10 @@ const ReservationsCreate = () => {
           px={24}
           overflow="auto"
         >
-          <ReactDatePicker
-            selected={date}
-            onChange={(date) => setDate(date)}
-            includeDateIntervals={[
-              { start: new Date(), end: addDays(new Date(), 30) },
-            ]}
-          />
+          <HStack>
+            <Text color="black">{formatDate(date, 'do MMM')}</Text>
+            <DatePicker date={date} setDate={setDate} />
+          </HStack>
           {error && (
           <Text>
             Something went bad
