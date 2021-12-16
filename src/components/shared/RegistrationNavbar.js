@@ -14,7 +14,6 @@ const RegistrationNavbar = () => (
         </HStack>
       </Link>
       <Heading w="100%" fontSize="xl" color="green.300" letterSpacing="widest" textAlign="center">SLOWPPI</Heading>
-      {/* <div display={{ base: 'none', sm: 'none', md: 'flex' }} /> */}
     </HStack>
   </Box>
 );

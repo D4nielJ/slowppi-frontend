@@ -4,14 +4,17 @@ React application that allows users to make reservations consuming the [Slowpi B
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [Screenshot](#screenshot)
-  - [Live Demo](#live-demo)
-  - [Available scripts](#available-scripts)
-- [My process](#my-process)
-  - [Built with](#built-with)
-- [Acknowledgments](#acknowledgments)
-- [Author](#author)
+- [Slowppi](#slowppi)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [Screenshot](#screenshot)
+    - [Live Demo](#live-demo)
+    - [Available Scripts](#available-scripts)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+  - [Kanban Board](#kanban-board)
+  - [Acknowledgments](#acknowledgments)
+  - [Author](#author)
 
 ## Overview
 
@@ -49,6 +52,12 @@ $ npm run build # Builds the app for production to the `build` folder.
 
 - React
 - [Chakra UI](https://chakra-ui.com/)
+
+## Kanban Board
+
+- [Visit the roadmap of our App.](https://github.com/leonardodiasb/final-capstone-back-end/projects/1)
+  
+  ![Kanban Board initial state](./)
 
 ## Acknowledgments
 

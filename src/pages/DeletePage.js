@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import {
@@ -33,15 +32,9 @@ const DeletePage = () => {
     setCurPage(0);
   };
 
-  // eslint-disable-next-line array-callback-return
-  const filteredArrayFull = restaurantsList.filter((val) => {
-    if (filtered === '') {
-      return val;
-    }
-    if (val.name.toLowerCase().includes(filtered.toLowerCase())) {
-      return val;
-    }
-  });
+  const filteredArrayFull = restaurantsList.filter((val) => (
+    val.name.toLowerCase().includes(filtered.toLowerCase()) || filtered === ''
+  ));
 
   const filteredArray = filteredArrayFull.slice(offset, offset + itemLimit);
 

@@ -1,6 +1,5 @@
 import TextInput from './TextInput';
+import CheckboxInput from './CheckboxInput';
+import TextArea from './TextArea';
 
-// Either change imports if no more exports in the future
-// or remove disabled once more exports
-/* eslint-disable */
-export { TextInput };
+export { TextInput, CheckboxInput, TextArea };

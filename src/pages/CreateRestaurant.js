@@ -12,9 +12,7 @@ import PropTypes from 'prop-types';
 import { useAuth } from '../utils/customHooks';
 import Layout from '../components/Layout/Layout';
 import { Button } from '../components/shared';
-import { TextInput } from '../components/shared/Forms';
-import TextArea from '../components/shared/Forms/TextArea';
-import CheckboxInput from '../components/shared/Forms/CheckboxInput';
+import { TextInput, TextArea, CheckboxInput } from '../components/shared/Forms';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
 import { createRestaurant } from '../utils/actions/restaurants.actions';
@@ -27,7 +25,6 @@ const CreateRestaurant = () => {
   const { user } = useSelector((state) => state.currentUser);
   const { shifts } = useSelector((state) => state.shifts);
   const { categories } = useSelector((state) => state.categories);
-  // const { status } = useSelector((state) => state.restaurants); For redirect
 
   useEffect(() => {
     if (user) {
@@ -85,7 +82,6 @@ const CreateRestaurant = () => {
             checkedCategories,
             checkedShifts,
           ));
-          // Redirect when success.
           setSubmitting(false);
         }}
       >
