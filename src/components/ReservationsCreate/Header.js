@@ -3,7 +3,7 @@ import { format as formatDate } from 'date-fns';
 import DatePicker from './DatePicker';
 
 const Header = ({ date, setDate }) => (
-  <Box bg="green.300" pt={24} pb={8} px={32} w="full" mb={8}>
+  <Box bg="green.300" pt={24} pb={8} px={32} w="full">
     <HStack
       minW="full"
       bg="white"
