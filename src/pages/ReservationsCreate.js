@@ -88,16 +88,34 @@ const ReservationsCreate = () => {
           pt={24}
           px={24}
           overflow="auto"
+          bg="green.300"
+          color="white"
         >
-          <HStack>
-            <Text color="black">{formatDate(date, 'do MMM')}</Text>
-            <DatePicker date={date} setDate={setDate} />
-          </HStack>
+          <Box px={8} w="full" mb={8}>
+            <HStack
+              minW="full"
+              bg="white"
+              rounded="full"
+              position="relative"
+              minH={16}
+              justify="center"
+            >
+              <Box position="absolute" right={0} top={0} bottom={0}>
+                <DatePicker date={date} setDate={setDate} />
+              </Box>
+              <Text
+                color="green.300"
+                fontSize="xl"
+                fontWeight="BOLD"
+              >
+                {formatDate(date, 'do MMMM')}
+              </Text>
+            </HStack>
+          </Box>
+          <Text as="h4" fontSize="lg" w="full" mb={4}>Shifts available:</Text>
           {error && (
           <Text>
-            Something went bad
-            {' '}
-            {error.status}
+            Ups! We&apos;re sorry. Something went bad.
           </Text>
           )}
           {shiftsAvailable && !error && (

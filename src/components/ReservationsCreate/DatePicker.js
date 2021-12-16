@@ -7,8 +7,15 @@ import { Button } from '../shared';
 
 const ChakraInput = forwardRef(({ onClick }, ref) => (
   <AspectRatio minW={16} ratio={1}>
-    <Button className="example-custom-input" onClick={onClick} ref={ref}>
-      <Icon as={IoCalendarOutline} fontSize="3xl" />
+    <Button
+      className="example-custom-input"
+      onClick={onClick}
+      ref={ref}
+      bg="white"
+      color="green.400"
+      _hover={{ color: 'white', bg: 'green.400' }}
+    >
+      <Icon as={IoCalendarOutline} fontSize="4xl" />
     </Button>
   </AspectRatio>
 ));
@@ -21,6 +28,7 @@ const DatePicker = ({ date, setDate }) => (
     onChange={(date) => setDate(date)}
     minDate={new Date()}
     maxDate={addDays(new Date(), 30)}
+    popperPlacement="bottom-start"
     customInput={<ChakraInput />}
   />
 );
