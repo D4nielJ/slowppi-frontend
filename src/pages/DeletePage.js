@@ -13,6 +13,7 @@ import { NavigationButton } from '../components/shared';
 
 const DeletePage = () => {
   useAuth('/restaurants', ['admin']);
+
   const { restaurantsList } = useSelector((state) => state.restaurants);
   const itemLimit = 10;
   const [curPage, setCurPage] = useState(0);
