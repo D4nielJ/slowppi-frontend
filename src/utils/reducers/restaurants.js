@@ -3,7 +3,7 @@ import { restaurantsConstants as rc } from '../constants';
 const initialState = {
   selectedRestaurant: null,
   restaurants: [],
-  restaurantslist: [],
+  restaurantsList: [],
   page: 1,
   status: 'idle',
   error: null,
@@ -20,14 +20,14 @@ const restaurantsReducer = (state = initialState, action) => {
     case rc.FETCH_RESTAURANTS_SUCCESS:
       return {
         ...state,
-        status: 'success',
+        status: 'idle',
         restaurants: [...state.restaurants, ...action.restaurants],
         error: null,
       };
     case rc.FETCH_SINGLE_RESTAURANT_SUCCESS:
       return {
         ...state,
-        status: 'success',
+        status: 'idle',
         selectedRestaurant: action.restaurant,
         error: null,
       };
@@ -37,11 +37,12 @@ const restaurantsReducer = (state = initialState, action) => {
         status: 'error',
         error: action.error,
       };
-    case rc.CLEAN_RESTAURANTS:
+    case rc.CLEAN_RESTAURANTS: // Update and implement
       return {
+        selectedRestaurant: null,
         restaurants: [],
-        prev: null,
-        next: null,
+        restaurantsList: [],
+        page: 1,
         status: 'idle',
         error: null,
       };
@@ -64,8 +65,8 @@ const restaurantsReducer = (state = initialState, action) => {
     case rc.FETCH_RESTAURANTS_DELETE_SUCCESS:
       return {
         ...state,
-        status: 'success',
-        restaurantslist: action.restaurantslist,
+        status: 'idle',
+        restaurantsList: action.restaurantsList,
         error: null,
       };
     case rc.FETCH_RESTAURANTS_DELETE_REJECTED:
@@ -84,9 +85,9 @@ const restaurantsReducer = (state = initialState, action) => {
       return {
         ...state,
         restaurants: action.restaurants,
-        restaurantslist: action.restaurantslist,
+        restaurantsList: action.restaurantsList,
         page: 1,
-        status: 'success',
+        status: 'idle',
         error: null,
       };
     case rc.DELETE_RESTAURANT_REJECTED:
@@ -94,6 +95,23 @@ const restaurantsReducer = (state = initialState, action) => {
         ...state,
         status: 'error',
         error: action.error,
+      };
+    case rc.CREATE_RESTAURANT_SUCCESS:
+      return {
+        ...state,
+        status: 'success',
+        selectedRestaurant: action.restaurant,
+      };
+    case rc.CREATE_RESTAURANT_REJECTED:
+      return {
+        ...state,
+        status: 'error',
+        error: action.error,
+      };
+    case rc.CLEAN_STATUS:
+      return {
+        ...state,
+        status: 'idle',
       };
     default:
       return state;

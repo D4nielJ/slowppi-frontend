@@ -13,19 +13,20 @@ import { useAuth } from '../utils/customHooks';
 import { NavigationButton } from '../components/shared';
 import Carousel from '../components/Restaurants/Carousel';
 
+const sortRests = (page, restaurantsArray, callback) => {
+  const range = (page * 3);
+  callback(restaurantsArray.slice(range - 3, range));
+};
+
 const Restaurants = () => {
   useAuth('/', ['', 'admin']);
+
   const dispatch = useDispatch();
   const { shifts, status: shiftsStatus } = useSelector((state) => state.shifts);
   const { categories, status: categoriesStatus } = useSelector((state) => state.categories);
   const { restaurants, page, status } = useSelector((state) => state.restaurants);
   const { user } = useSelector((state) => state.currentUser);
   const [sortedRests, setSortedRests] = useState([]);
-
-  const sortRests = (page) => {
-    const range = (page * 3);
-    setSortedRests(restaurants.slice(range - 3, range));
-  };
 
   useEffect(() => {
     if (user) {
@@ -39,8 +40,11 @@ const Restaurants = () => {
         dispatch(fetchRestaurantsInitial(user));
       }
     }
-    sortRests(page);
-  }, [shifts, categories, restaurants, user, page]);
+  }, [shifts, categories, restaurants, user, dispatch]);
+
+  useEffect(() => {
+    sortRests(page, restaurants, setSortedRests);
+  }, [page, restaurants, setSortedRests, sortRests]);
 
   const handleNextPage = () => {
     if (Math.ceil(restaurants.length / 3) < page + 2) {

@@ -5,8 +5,20 @@ import {
 
 const MenuImage = ({ src, name }) => (
   <AspectRatio w="100%" ratio={1}>
-    <Box position="relative">
-      <Image src={src} alt={name} position="absolute" objectFit="cover" h="full" w="full" rounded={8} />
+    <Box position="relative" role="group" rounded={8} _hover={{ cursor: 'pointer' }}>
+      <Image
+        src={src}
+        alt={name}
+        position="absolute"
+        objectFit="cover"
+        h="full"
+        w="full"
+        rounded={8}
+        _groupHover={{ transform: 'scale(104%)' }}
+        transition="ease-in-out"
+        transitionProperty="all"
+        transitionDuration="0.15s"
+      />
       <Text
         position="absolute"
         textTransform="uppercase"

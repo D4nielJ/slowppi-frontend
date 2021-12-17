@@ -8,7 +8,8 @@ const restautantsConstants = {
   SET_PAGE_INCREMENT: 'restaurants/setPage/increment',
   SET_PAGE_DECREMENT: 'restaurants/setPage/decrement',
 
-  CLEAN_RESTAURANTS: 'restaurants/cleanRestaurants/success',
+  CLEAN_RESTAURANTS: 'restaurants/cleanRestaurants',
+  CLEAN_STATUS: 'restaurants/cleanStatus',
 
   DELETE_RESTAURANT_LOADING: 'restautants/deleteRestautant/loading',
   DELETE_RESTAURANT_SUCCESS: 'restautants/deleteRestautant/success',

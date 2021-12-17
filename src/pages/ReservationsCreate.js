@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
-import {
-  Box, HStack, Text, Flex, Image,
-} from '@chakra-ui/react';
-import ReactDatePicker from 'react-datepicker';
-import addDays from 'date-fns/addDays';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { format } from 'date-fns';
+import {
+  HStack, Text, Flex, VStack,
+} from '@chakra-ui/react';
+import { format as formatDate } from 'date-fns';
 import Layout from '../components/Layout/Layout';
 import { createApi } from '../utils/helpers';
 import { useAuth } from '../utils/customHooks';
 import { fetchShifts } from '../utils/actions/shifts.actions';
-import { NavigationButton } from '../components/shared';
+import { Button, LeftBigImage } from '../components/shared';
+import Header from '../components/ReservationsCreate/Header';
+import ShiftsRow from '../components/ReservationsCreate/ShiftsRow';
+import { fetchSingleRestaurant } from '../utils/actions/restaurants.actions';
 
 const ReservationsCreate = () => {
   useAuth('/restaurants', ['', 'admin']);
@@ -19,13 +20,16 @@ const ReservationsCreate = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { id } = useParams();
+  let { id } = useParams();
   const { user } = useSelector((state) => state.currentUser);
 
   const { shifts } = useSelector((state) => state.shifts);
   const [date, setDate] = useState(new Date());
   const [shiftsAvailable, setShiftsAvailable] = useState(null);
   const [error, setError] = useState(null);
+
+  const { token } = user ?? { token: null };
+  const api = createApi(token);
 
   useEffect(() => {
     if (user && shifts.length === 0) {
@@ -34,11 +38,9 @@ const ReservationsCreate = () => {
   }, [user, shifts]);
 
   useEffect(() => {
-    const { token } = user ?? null;
-    const api = createApi(token);
     const fetchFreeSpots = async () => {
       try {
-        const { data: { body } } = await api.get(`v1/restaurants/${id}/availability/${format(date, 'yyyy-MM-dd')}`);
+        const { data: { body } } = await api.get(`v1/restaurants/${id}/availability/${formatDate(date, 'yyyy-MM-dd')}`);
         setShiftsAvailable(body);
         setError(null);
       } catch (err) {
@@ -54,11 +56,9 @@ const ReservationsCreate = () => {
 
   const handleReservation = (shiftName) => {
     const [{ name: shift }] = shifts.filter((shift) => shift.name === shiftName);
-    const { token } = user ?? null;
     const postReservation = async () => {
-      const api = createApi(token);
       const { data: { status } } = await api.post('v1/reservations', {
-        date: format(date, 'yyyy-MM-dd'),
+        date: formatDate(date, 'yyyy-MM-dd'),
         shift,
         restaurant_id: +id,
       });
@@ -73,44 +73,50 @@ const ReservationsCreate = () => {
     }
   });
 
+  const { selectedRestaurant } = useSelector((state) => state.restaurants);
+  const { name } = selectedRestaurant ?? { name: 'Something went bad' };
+
+  useEffect(() => {
+    if (user) {
+      id = +id;
+      if (!selectedRestaurant || (selectedRestaurant && selectedRestaurant.id !== id)) {
+        dispatch(fetchSingleRestaurant(user, id));
+      }
+    }
+  }, [id, selectedRestaurant, user]);
+
   return (
     <Layout>
       <HStack h="100vh" spacing={0} position="relative">
-        <Box h="100vh" flex="1 1 65%">
-          <Image src="../../assets/images/details.jpg" alt="" objectFit="cover" h="full" w="full" />
-        </Box>
-        <NavigationButton position="absolute" bottom={40} onClick={() => { navigate(-1); }} isReversed />
+        <LeftBigImage src="../../assets/images/details.jpg" />
         <Flex
           h="full"
           direction="column"
           flex="1 0 600px"
           alignItems="center"
-          pt={24}
-          px={24}
           overflow="auto"
         >
-          <ReactDatePicker
-            selected={date}
-            onChange={(date) => setDate(date)}
-            includeDateIntervals={[
-              { start: new Date(), end: addDays(new Date(), 30) },
-            ]}
-          />
+          <Header name={name} date={date} setDate={setDate} />
           {error && (
           <Text>
-            Something went bad
-            {' '}
-            {error.status}
+            Ups! We&apos;re sorry. Something went bad.
           </Text>
           )}
-          {shiftsAvailable && !error && (
-            Object.keys(shiftsAvailable).map((shift) => (
-              <div key={shift}>
-                <Text>{shift}</Text>
-                <button type="button" onClick={() => handleReservation(shift)}>Make reservation</button>
-              </div>
-            ))
-          )}
+          <VStack w="full" px={24} py={12} spacing={6}>
+            {shiftsAvailable && !error && (
+              Object.keys(shiftsAvailable).map((shift) => (
+                <ShiftsRow
+                  key={shift}
+                  shift={shift}
+                  shiftsAvailable={shiftsAvailable}
+                  handleReservation={handleReservation}
+                />
+              ))
+            )}
+          </VStack>
+          <Button as="a" href="/reservations">
+            <Text>Your reservations</Text>
+          </Button>
         </Flex>
       </HStack>
     </Layout>
@@ -118,7 +124,3 @@ const ReservationsCreate = () => {
 };
 
 export default ReservationsCreate;
-
-// <Box mb={4}>
-//   <DateStripe date={date} setDate={setDate} />
-// </Box>;

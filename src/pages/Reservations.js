@@ -25,7 +25,7 @@ const Reservations = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.currentUser);
-  const { restaurantslist } = useSelector((state) => state.restaurants);
+  const { restaurantsList } = useSelector((state) => state.restaurants);
 
   const [reservationsAvail, setReservationsAvail] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +33,9 @@ const Reservations = () => {
   const cancelRef = useRef(null);
   const [resToDelete, setResToDelete] = useState(null);
 
-  const api = createApi(user.token);
+  const { token } = user ?? { token: null };
+  const api = createApi(token);
+
   const fetchReservations = async () => {
     const { data } = await api.get('v1/reservations/');
     setReservationsAvail(data);
@@ -47,21 +49,19 @@ const Reservations = () => {
 
   useEffect(() => {
     if (user) {
-      if (restaurantslist.length === 0) {
+      if (restaurantsList.length === 0) {
         dispatch(fetchRestaurantsDelete(user));
       }
     }
-  }, [restaurantslist]);
+  }, [restaurantsList]);
 
   const restaurantsSerialize = {};
-  restaurantslist.forEach(({ id, name }) => {
+  restaurantsList.forEach(({ id, name }) => {
     restaurantsSerialize[id] = name;
   });
 
   const handleCancelReservation = () => {
-    const { token } = user ?? null;
     const cancelReservation = async () => {
-      const api = createApi(token);
       await api.delete(`v1/reservations/${resToDelete}`);
       fetchReservations();
     };
