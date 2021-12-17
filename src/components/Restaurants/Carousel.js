@@ -4,21 +4,20 @@ import PropTypes from 'prop-types';
 import RestCard from './RestaurantCard';
 
 const Carousel = ({ rests }) => (
-  <HStack
-    spacing={28}
-    pt={12}
-  >
-    <AnimatePresence initial={false} exitBeforeEnter>
+  <AnimatePresence initial={false} exitBeforeEnter>
+    <HStack
+      spacing={28}
+      pt={12}
+    >
       {rests && rests.map((rest) => (
         <RestCard key={rest.id} rest={rest} />
       ))}
-    </AnimatePresence>
-  </HStack>
-
+    </HStack>
+  </AnimatePresence>
 );
 
 Carousel.propTypes = {
-  rests: PropTypes.objectOf(PropTypes.any).isRequired,
+  rests: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default Carousel;

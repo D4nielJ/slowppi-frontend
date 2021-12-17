@@ -1,9 +1,9 @@
 const formatUser = (token) => {
   const [, payload] = token.auth_token.split('.');
-  const { exp, user_id: id } = JSON.parse(window.atob(payload));
+  const { exp, user_id: id, role } = JSON.parse(window.atob(payload));
   return {
     id,
-    role: 'admin',
+    role,
     exp,
     token: token.auth_token,
   };

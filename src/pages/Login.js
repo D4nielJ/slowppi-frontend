@@ -8,6 +8,7 @@ import { useRedirectLoggedIn } from '../utils/customHooks';
 
 const Login = () => {
   useRedirectLoggedIn('/restaurants');
+
   return (
     <VStack spacing={0}>
       <RegistrationNavbar />

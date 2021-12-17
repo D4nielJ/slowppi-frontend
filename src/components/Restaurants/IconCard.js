@@ -19,7 +19,7 @@ const IconCard = ({ href, as }) => (
 
 IconCard.propTypes = {
   href: PropTypes.string.isRequired,
-  as: PropTypes.node.isRequired,
+  as: PropTypes.func.isRequired,
 };
 
 export default IconCard;

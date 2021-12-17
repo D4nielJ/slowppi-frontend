@@ -1,23 +1,21 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
-  HStack, Image, Box, Text, Flex, Badge, Grid, Icon,
+  HStack, Text, Flex, Badge, Grid, Icon,
 } from '@chakra-ui/react';
 import { IoBookOutline, IoLogoUsd } from 'react-icons/io5';
 import Layout from '../components/Layout/Layout';
 import { fetchSingleRestaurant } from '../utils/actions/restaurants.actions';
 import { useAuth } from '../utils/customHooks';
-import { NavigationButton, Button } from '../components/shared';
+import { Button, LeftBigImage } from '../components/shared';
 import MenuImage from '../components/Restaurants/DetailsPage/MenuImage';
 
 const RestaurantDetails = () => {
   useAuth('/restaurants', ['', 'admin']);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   let { id } = useParams();
-  id = +id;
 
   const { user } = useSelector((state) => state.currentUser);
   const { selectedRestaurant } = useSelector((state) => state.restaurants);
@@ -25,6 +23,7 @@ const RestaurantDetails = () => {
 
   useEffect(() => {
     if (user) {
+      id = +id;
       if (!selectedRestaurant || (selectedRestaurant && selectedRestaurant.id !== id)) {
         dispatch(fetchSingleRestaurant(user, id));
       }
@@ -35,10 +34,7 @@ const RestaurantDetails = () => {
     <Layout>
       {selectedRestaurant && (
         <HStack h="100vh" spacing={0} position="relative">
-          <Box h="100vh" flex="1 1 65%">
-            <Image src="../assets/images/details.jpg" alt={name} objectFit="cover" h="full" w="full" />
-          </Box>
-          <NavigationButton position="absolute" bottom={60} onClick={() => { navigate(-1); }} isReversed />
+          <LeftBigImage src="../assets/images/details.jpg" />
           <Flex
             h="full"
             direction="column"
@@ -71,7 +67,7 @@ const RestaurantDetails = () => {
               <MenuImage src="../assets/images/sushi/sushi3.jpg" name="Nigirizushi" />
               <MenuImage src="../assets/images/sushi/sushi4.jpg" name="Uramaki" />
             </Grid>
-            <Button mb={8}>
+            <Button as="a" mb={8} href={`/restaurants/${id}/reserve`}>
               <HStack spacing={2}>
                 <Icon as={IoBookOutline} fontSize="2xl" />
                 <Text>Reservations</Text>

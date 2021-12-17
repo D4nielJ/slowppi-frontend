@@ -17,8 +17,12 @@ const Layout = ({ children }) => (
   </HStack>
 );
 
+Layout.defaultProps = {
+  children: <div />,
+};
+
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default Layout;

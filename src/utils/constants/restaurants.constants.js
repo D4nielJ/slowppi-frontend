@@ -8,15 +8,20 @@ const restautantsConstants = {
   SET_PAGE_INCREMENT: 'restaurants/setPage/increment',
   SET_PAGE_DECREMENT: 'restaurants/setPage/decrement',
 
-  CLEAN_RESTAURANTS: 'restaurants/cleanRestaurants/success',
+  CLEAN_RESTAURANTS: 'restaurants/cleanRestaurants',
+  CLEAN_STATUS: 'restaurants/cleanStatus',
+
+  DELETE_RESTAURANT_LOADING: 'restautants/deleteRestautant/loading',
+  DELETE_RESTAURANT_SUCCESS: 'restautants/deleteRestautant/success',
+  DELETE_RESTAURANT_REJECTED: 'restautants/deleteRestautant/rejected',
+
+  FETCH_RESTAURANTS_DELETE_LOADING: 'restautants/fetchRestautantsDelete/loading',
+  FETCH_RESTAURANTS_DELETE_SUCCESS: 'restautants/fetchRestautantsDelete/success',
+  FETCH_RESTAURANTS_DELETE_REJECTED: 'restautants/fetchRestautantsDelete/rejected',
 
   CREATE_RESTAURANT_LOADING: 'restautants/createRestaurant/loading',
   CREATE_RESTAURANT_SUCCESS: 'restautants/createRestaurant/success',
   CREATE_RESTAURANT_REJECTED: 'restautants/createRestaurant/rejected',
-
-  // DELETE_RESTAURANTS_LOADING: 'restaurants/deleteRestautants/loading',
-  // DELETE_RESTAURANTS_SUCCESS: 'restaurants/deleteRestautants/success',
-  // DELETE_RESTAURANTS_REJECTED: 'restaurants/deleteRestautants/rejected',
 };
 
 export default restautantsConstants;

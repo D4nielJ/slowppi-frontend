@@ -89,15 +89,13 @@ const RestCard = ({
   );
 };
 
-const restShape = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  image: PropTypes.string.isRequired, // A default image would be good here.
-};
-
 RestCard.propTypes = {
-  rest: PropTypes.objectOf(PropTypes.shape(restShape)).isRequired,
+  rest: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default RestCard;
