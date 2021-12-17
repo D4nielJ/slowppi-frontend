@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Slowppi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React application that allows users to make reservations consuming the [Slowpi Backend](https://github.com/leonardodiasb/final-capstone-back-end)
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Slowppi](#slowppi)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [Screenshot](#screenshot)
+    - [Live Demo](#live-demo)
+    - [Available Scripts](#available-scripts)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+  - [Kanban Board](#kanban-board)
+  - [Acknowledgments](#acknowledgments)
+  - [Author](#author)
 
-### `yarn start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Screenshot
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Screenshot 1](./screenshot.png)
 
-### `yarn test`
+### Live Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Slowppi](https://slowppi.netlify.app/)
 
-### `yarn build`
+- [Backend](https://github.com/leonardodiasb/final-capstone-back-end)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Available Scripts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Clone this repository
+```bash
+$ git clone git@github.com:alonsofl/slowppi-frontend.git
+$ cd slowppi-frontend/
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Run the app
+```bash
+$ npm start # Runs the app in the development mode.
+```
 
-### `yarn eject`
+- Or build
+```bash
+$ npm run build # Builds the app for production to the `build` folder.
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## My process
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Built with
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- React
+- [Chakra UI](https://chakra-ui.com/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Kanban Board
 
-## Learn More
+- [Visit the roadmap of our App.](https://github.com/leonardodiasb/final-capstone-back-end/projects/1)
+  
+  ![Kanban Board initial state](./)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acknowledgments
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Original design idea by [Murat Korkmaz on Behance](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
 
-### Code Splitting
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Abimbola Buari**
+- GitHub: [@bimbolabuari](https://github.com/bimbolabuari)
+- Twitter: [@bimbolabuari](https://twitter.com/bimbolabuari)
+- LinkedIn: [@bimbolabuari](https://www.linkedin.com/in/bimbolabuari)
 
-### Analyzing the Bundle Size
+**Alonso Falconi**
+- GitHub - [@alonsofl](https://github.com/alonsofl)
+- LinkedIn - [Alonso Falconi](https://www.linkedin.com/in/alonsofalconi/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Daniel Jaramillo**
+- GitHub: [@d4nielj](https://github.com/d4nielj)
+- Twitter: [@d4niel_jm](https://twitter.com/d4niel_jm)
+- LinkedIn: [d4nielj](https://linkedin.com/in/d4nielj)
 
-### Making a Progressive Web App
+**Leonardo Dias**
+- GitHub: [@leonardodiasb](https://github.com/leonardodiasb)
+- Twitter: [@BussularDias](https://twitter.com/BussularDias)
+- LinkedIn: [Leonardo Dias Bussular](https://www.linkedin.com/in/leonardo-dias-bussular-a67392178/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Give a ⭐️ if you like this project!
