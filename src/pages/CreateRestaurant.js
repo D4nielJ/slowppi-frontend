@@ -16,7 +16,9 @@ import { Button } from '../components/shared';
 import { TextInput, TextArea, CheckboxInput } from '../components/shared/Forms';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
-import { cleanStatus, createRestaurant, fetchRestaurantsInitial } from '../utils/actions/restaurants.actions';
+import {
+  cleanRestaurants, cleanStatus, createRestaurant, fetchRestaurantsInitial,
+} from '../utils/actions/restaurants.actions';
 
 const CreateRestaurant = () => {
   useAuth('/restaurants', ['admin']);
@@ -45,7 +47,7 @@ const CreateRestaurant = () => {
       dispatch(cleanStatus());
       navigate(`/restaurants/${selectedRestaurant.id}`, { replace: true });
     }
-  });
+  }, [status, dispatch, cleanRestaurants, navigate]);
 
   return (
     <Layout>
