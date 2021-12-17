@@ -6,9 +6,9 @@ export const createRestaurantSuccess = (restaurant) => ({
   restaurant,
 });
 
-export const createRestaurantRejected = (restaurant) => ({
+export const createRestaurantRejected = (error) => ({
   type: rc.CREATE_RESTAURANT_REJECTED,
-  restaurant,
+  error,
 });
 
 const fetchRestaurantsLoading = () => ({
@@ -32,6 +32,10 @@ export const fetchRestaurantsRejected = (error) => ({
 
 export const cleanRestaurants = () => ({
   type: rc.CLEAN_RESTAURANTS,
+});
+
+export const cleanStatus = () => ({
+  type: rc.CLEAN_STATUS,
 });
 
 export const incrementPage = () => ({
@@ -130,7 +134,6 @@ export const fetchRestaurantsDelete = (user) => async (dispatch) => {
   const api = createApi(user.token);
   try {
     const { data } = await api.get('v1/eliminate');
-
     dispatch(fetchRestaurantsDeleteSuccess(data));
   } catch (err) {
     dispatch(fetchRestaurantsDeleteRejected(err));
@@ -164,7 +167,7 @@ export const createRestaurant = (
   dispatch(fetchRestaurantsLoading());
   const api = createApi(user.token);
   try {
-    const { data } = await api.post('v1/restaurants', {
+    const { data: { data } } = await api.post('v1/restaurants', {
       name,
       image,
       description,

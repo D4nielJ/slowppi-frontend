@@ -20,14 +20,14 @@ const restaurantsReducer = (state = initialState, action) => {
     case rc.FETCH_RESTAURANTS_SUCCESS:
       return {
         ...state,
-        status: 'success',
+        status: 'idle',
         restaurants: [...state.restaurants, ...action.restaurants],
         error: null,
       };
     case rc.FETCH_SINGLE_RESTAURANT_SUCCESS:
       return {
         ...state,
-        status: 'success',
+        status: 'idle',
         selectedRestaurant: action.restaurant,
         error: null,
       };
@@ -65,7 +65,7 @@ const restaurantsReducer = (state = initialState, action) => {
     case rc.FETCH_RESTAURANTS_DELETE_SUCCESS:
       return {
         ...state,
-        status: 'success',
+        status: 'idle',
         restaurantsList: action.restaurantsList,
         error: null,
       };
@@ -87,7 +87,7 @@ const restaurantsReducer = (state = initialState, action) => {
         restaurants: action.restaurants,
         restaurantsList: action.restaurantsList,
         page: 1,
-        status: 'success',
+        status: 'idle',
         error: null,
       };
     case rc.DELETE_RESTAURANT_REJECTED:
@@ -95,6 +95,23 @@ const restaurantsReducer = (state = initialState, action) => {
         ...state,
         status: 'error',
         error: action.error,
+      };
+    case rc.CREATE_RESTAURANT_SUCCESS:
+      return {
+        ...state,
+        status: 'success',
+        selectedRestaurant: action.restaurant,
+      };
+    case rc.CREATE_RESTAURANT_REJECTED:
+      return {
+        ...state,
+        status: 'error',
+        error: action.error,
+      };
+    case rc.CLEAN_STATUS:
+      return {
+        ...state,
+        status: 'idle',
       };
     default:
       return state;

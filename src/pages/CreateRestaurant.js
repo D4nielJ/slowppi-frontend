@@ -9,22 +9,25 @@ import {
   CheckboxGroup,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../utils/customHooks';
 import Layout from '../components/Layout/Layout';
 import { Button } from '../components/shared';
 import { TextInput, TextArea, CheckboxInput } from '../components/shared/Forms';
 import { fetchShifts } from '../utils/actions/shifts.actions';
 import { fetchCategories } from '../utils/actions/categories.actions';
-import { createRestaurant } from '../utils/actions/restaurants.actions';
+import { cleanStatus, createRestaurant, fetchRestaurantsInitial } from '../utils/actions/restaurants.actions';
 
 const CreateRestaurant = () => {
   useAuth('/restaurants', ['admin']);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.currentUser);
   const { shifts } = useSelector((state) => state.shifts);
   const { categories } = useSelector((state) => state.categories);
+  const { status, selectedRestaurant } = useSelector((state) => state.restaurants);
 
   useEffect(() => {
     if (user) {
@@ -36,6 +39,13 @@ const CreateRestaurant = () => {
       }
     }
   }, [shifts, categories]);
+
+  useEffect(() => {
+    if (status === 'success') {
+      dispatch(cleanStatus());
+      navigate(`/restaurants/${selectedRestaurant.id}`, { replace: true });
+    }
+  });
 
   return (
     <Layout>
@@ -82,6 +92,7 @@ const CreateRestaurant = () => {
             checkedCategories,
             checkedShifts,
           ));
+          await dispatch(fetchRestaurantsInitial(user));
           setSubmitting(false);
         }}
       >
