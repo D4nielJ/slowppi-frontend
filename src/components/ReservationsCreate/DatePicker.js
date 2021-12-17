@@ -1,8 +1,8 @@
-import { forwardRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import addDays from 'date-fns/addDays';
 import { IoCalendarOutline } from 'react-icons/io5';
-import { Icon, AspectRatio } from '@chakra-ui/react';
+import { Icon, AspectRatio, forwardRef } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { Button } from '../shared';
 
