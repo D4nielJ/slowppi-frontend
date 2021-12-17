@@ -1,5 +1,4 @@
 import { VStack } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
 import { Button } from '../components/shared';
 import { useAuth } from '../utils/customHooks';
