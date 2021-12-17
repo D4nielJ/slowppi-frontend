@@ -56,14 +56,20 @@ $ npm run build # Builds the app for production to the `build` folder.
 ## Kanban Board
 
 - [Visit the roadmap of our App.](https://github.com/leonardodiasb/final-capstone-back-end/projects/1)
-  
-  ![Kanban Board initial state](./)
+
+### Before
+
+![Kanban Board initial state](./kanban-before-1.png)
+
+[Screenshot 1](./kanban-before-1.png)
+
+[Screenshot 2](./kanban-before-2.png)
 
 ## Acknowledgments
 
 - Original design idea by [Murat Korkmaz on Behance](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
 
-## Author
+## Authors (4)
 
 **Abimbola Buari**
 - GitHub: [@bimbolabuari](https://github.com/bimbolabuari)
